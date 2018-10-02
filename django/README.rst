@@ -1,15 +1,19 @@
-# Django project example
+========================
+ Django project example
+========================
 
 This project contains examples of using dry-python_ libraries together
 with Django_ framework.
 
-## Installation
+Installation
+============
 
 .. code:: bash
 
     $ pipenv install
 
-## Run
+Run
+===
 
 .. code:: bash
 
