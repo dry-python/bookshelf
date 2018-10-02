@@ -8,6 +8,7 @@ django = "*"
 stories = {editable = true, ref = "c6fa83c4385a24d6a59c1e1980b4460a45c4a64d", git = "https://github.com/dry-python/stories.git"}
 dependencies = "*"
 attrs = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 

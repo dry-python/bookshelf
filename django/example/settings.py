@@ -1,5 +1,7 @@
 import os
 
+from debug_toolbar.settings import PANELS_DEFAULTS
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -10,16 +12,22 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    # Builtin.
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third-party.
+    "debug_toolbar",
+    "stories.contrib.debug_toolbars.django",
+    # Project.
     "example.apps.ExampleConfig",
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -74,3 +82,9 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
+
+INTERNAL_IPS = ["127.0.0.1"]
+
+DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
+    "stories.contrib.debug_toolbars.django.panels.StoriesPanel"
+]
