@@ -1,0 +1,50 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "4ef744608d124a0428c2024186c2a400e8213ad9f508a4a0a796f77f57877b32"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.7"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "dependencies": {
+            "hashes": [
+                "sha256:876a60b30e8c06937f7245b32b73957dbfb91d80e412f9bd43e2a06475ca1a69",
+                "sha256:f52574a78493aec35d2bd47656b0770c7a0696a515e5f32d163cb83fbc4b5817",
+                "sha256:fae250bf563b75d70951d4e763e7b51f6a191b128914f93d8356322335d42f1f"
+            ],
+            "index": "pypi",
+            "version": "==0.15"
+        },
+        "django": {
+            "hashes": [
+                "sha256:acdcc1f61fdb0a0c82a1d3bf1879a414e7732ea894a7632af7f6d66ec7ab5bb3",
+                "sha256:efbcad7ebb47daafbcead109b38a5bd519a3c3cd92c6ed0f691ff97fcdd16b45"
+            ],
+            "index": "pypi",
+            "version": "==2.1.2"
+        },
+        "pytz": {
+            "hashes": [
+                "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
+                "sha256:ffb9ef1de172603304d9d2819af6f5ece76f2e85ec10692a524dd876e72bf277"
+            ],
+            "version": "==2018.5"
+        },
+        "stories": {
+            "editable": true,
+            "git": "https://github.com/dry-python/stories.git",
+            "ref": "c6fa83c4385a24d6a59c1e1980b4460a45c4a64d"
+        }
+    },
+    "develop": {}
+}
