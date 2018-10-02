@@ -19,6 +19,7 @@ Run
 
     $ pipenv run ./manage.py migrate
     $ pipenv run ./manage.py runserver
+    $ pipenv run ./manage.py createsuperuser
 
 .. _dry-python: https://dry-python.org
 .. _django: https://www.djangoproject.com
