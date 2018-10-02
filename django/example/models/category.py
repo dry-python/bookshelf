@@ -9,4 +9,4 @@ class Category(models.Model):
     class Meta:
 
         verbose_name = _("category")
-        verbose_name_plural = _("categorys")
+        verbose_name_plural = _("categories")
