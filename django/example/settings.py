@@ -11,6 +11,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = ["127.0.0.1"]
+
 INSTALLED_APPS = [
     # Builtin.
     "django.contrib.admin",
@@ -38,6 +40,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "example.urls"
+
+LOGIN_URL = "/login/"
 
 TEMPLATES = [
     {
@@ -82,8 +86,6 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-
-INTERNAL_IPS = ["127.0.0.1"]
 
 DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
     "stories.contrib.debug_toolbars.django.panels.StoriesPanel"
