@@ -11,5 +11,6 @@ urlpatterns = [
     path("__debug__/", include(debug_toolbar.urls)),
     path("admin/", admin.site.urls),
     path("login/", LoginView.as_view()),
+    path("sign_up/", views.SignUp.as_view()),
     path("categories/", login_required(views.CategoryList.as_view())),
 ]

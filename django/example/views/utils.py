@@ -10,7 +10,7 @@ class Render:
 
     request = attrib()
 
-    def do(self, context):
+    def do(self, context=None):
 
         return shortcuts.render(self.request, self.template_name, context)
 

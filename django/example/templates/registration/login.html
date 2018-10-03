@@ -3,6 +3,7 @@
 {% load i18n %}
 
 {% block body %}
+  <a href="/sign_up/">{% trans 'Sign Up' %}</a>
   <form method="POST" action="">
     {% csrf_token %}
     {{ form.as_p }}
