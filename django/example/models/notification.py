@@ -1,12 +1,13 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from .profile import Profile
 
 
 class Notification(models.Model):
 
-    user = models.ForeignKey(
-        User, related_name="notifications", on_delete=models.CASCADE
+    profile = models.ForeignKey(
+        Profile, related_name="notifications", on_delete=models.CASCADE
     )
 
     message = models.TextField()

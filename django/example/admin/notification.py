@@ -6,4 +6,4 @@ from example.models import Notification
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
 
-    list_display = ["user", "message"]
+    list_display = ["profile", "message"]
