@@ -1,1 +1,12 @@
 {% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block body %}
+  <a href="/login/">{% trans 'Login' %}</a>
+  <form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans 'Register' %}">
+  </form>
+{% endblock %}

@@ -1,18 +1,15 @@
-from dependencies import Package, operation
-from dependencies.contrib.django import view
+from dependencies import Injector, Package, operation
+from dependencies.contrib.django import form_view
 
-from .utils import TemplateMixin
+from example.forms import SignUpForm
 
 
 services = Package("example.services")
 
 
-@view
-class SignUp(TemplateMixin):
+@form_view
+class SignUp(Injector):
 
     template_name = "sign_up.html"
-
-    @operation
-    def get(render):
-
-        return render()
+    form_class = SignUpForm
+    success_url = ""
