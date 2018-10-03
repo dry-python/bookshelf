@@ -1,5 +1,5 @@
-from .category import *  # noqa
-from .entry import *  # noqa
-from .notification import *  # noqa
-from .profile import *  # noqa
-from .subscription import *  # noqa
+from .category import Category  # noqa
+from .entry import Entry  # noqa
+from .notification import Notification  # noqa
+from .profile import Profile  # noqa
+from .subscription import Subscription  # noqa

@@ -1,1 +1,1 @@
-from .list_categories import *  # noqa
+from .list_categories import ListCategories  # noqa
