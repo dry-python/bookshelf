@@ -12,4 +12,4 @@ class SignUp(Injector):
 
     template_name = "sign_up.html"
     form_class = SignUpForm
-    success_url = ""
+    success_url = "/"
