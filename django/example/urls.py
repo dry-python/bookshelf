@@ -3,11 +3,13 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.urls import include, path
+from django.views.generic import RedirectView
 
 from example import views
 
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="/categories/")),
     path("__debug__/", include(debug_toolbar.urls)),
     path("admin/", admin.site.urls),
     path("login/", LoginView.as_view()),
