@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6dba107d74dda48838edf4154d2a66acb34e5062615ac985028d110a9a5ff5ae"
+            "sha256": "fcadba4ff08ee5069817dc2be6ff602879e66e291dcbe7db0edbf59b557dc42e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -25,13 +25,9 @@
             "version": "==18.2.0"
         },
         "dependencies": {
-            "hashes": [
-                "sha256:876a60b30e8c06937f7245b32b73957dbfb91d80e412f9bd43e2a06475ca1a69",
-                "sha256:f52574a78493aec35d2bd47656b0770c7a0696a515e5f32d163cb83fbc4b5817",
-                "sha256:fae250bf563b75d70951d4e763e7b51f6a191b128914f93d8356322335d42f1f"
-            ],
-            "index": "pypi",
-            "version": "==0.15"
+            "editable": true,
+            "git": "https://github.com/dry-python/dependencies.git",
+            "ref": "ecd379fe1eaadee71b0e062271114f31419fb358"
         },
         "django": {
             "hashes": [
