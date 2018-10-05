@@ -16,3 +16,7 @@ class Notification(models.Model):
 
         verbose_name = _("notification")
         verbose_name_plural = _("notifications")
+
+    def __str__(self):
+
+        return self.message
