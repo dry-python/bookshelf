@@ -1,7 +1,10 @@
-from dependencies import operation
+from dependencies import Package, operation
 from dependencies.contrib.django import view
 
 from .utils import TemplateMixin
+
+
+services = Package("example.services")
 
 
 @view
@@ -9,7 +12,9 @@ class CategoryShop(TemplateMixin):
 
     template_name = "category_shop.html"
 
-    @operation
-    def get(render):
+    categories_for_purchase = services.CategoriesForPurchase.list
 
-        return render()
+    @operation
+    def get(categories_for_purchase, render, user):
+
+        return render(categories_for_purchase(user))
