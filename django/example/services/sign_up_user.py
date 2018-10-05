@@ -16,6 +16,7 @@ class SignUp:
         self.encrypt_password()
         self.persist_profile()
         self.login_user()
+        self.send_welcome_notification()
 
     # Points.
 
@@ -55,6 +56,11 @@ class SignUp:
         self.store_user_in_session(self.ctx.user)
         return Success()
 
+    def send_welcome_notification(self):
+
+        notification = self.send_notification(self.ctx.profile, "welcome")
+        return Success(notification=notification)
+
     # Dependencies.
 
     validate_password = attrib()
@@ -62,3 +68,4 @@ class SignUp:
     save_password = attrib()
     create_profile = attrib()
     store_user_in_session = attrib()
+    send_notification = attrib()

@@ -23,6 +23,9 @@ class SignUp(Injector):
     save_password = repositories.save_password
     create_profile = repositories.create_profile
     store_user_in_session = functions.StoreUserInSession.do
+    send_notification = functions.SendNotification.do
+    messages = functions.Messages
+    create_notification = repositories.create_notification
 
     data = this.form.cleaned_data
 
