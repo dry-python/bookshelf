@@ -17,6 +17,4 @@ class CategoryList(TemplateMixin):
     @operation
     def get(list_categories, render, user):
 
-        result = list_categories.run(user)
-        if result.is_success:
-            return render(result.value)
+        return render(list_categories(user))

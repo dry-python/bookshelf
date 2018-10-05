@@ -17,4 +17,5 @@ urlpatterns = [
     path("login/", LoginView.as_view()),
     path("sign_up/", views.SignUp.as_view()),
     path("categories/", login_required(views.CategoryList.as_view())),
+    path("shop/", login_required(views.CategoryShop.as_view())),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
