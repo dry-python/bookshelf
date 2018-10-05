@@ -1,4 +1,6 @@
 import debug_toolbar
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
@@ -15,4 +17,4 @@ urlpatterns = [
     path("login/", LoginView.as_view()),
     path("sign_up/", views.SignUp.as_view()),
     path("categories/", login_required(views.CategoryList.as_view())),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
