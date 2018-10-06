@@ -1,1 +1,16 @@
 {% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block body %}
+  <nav>
+    <ol>
+      <li>
+        <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
+      </li>
+    </ol>
+  </nav>
+{% endblock %}
