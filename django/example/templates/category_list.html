@@ -10,4 +10,19 @@
       </li>
     </ol>
   </nav>
+  <div>
+    {% if categories %}
+      <ul>
+        {% for category in categories %}
+          <li>
+            {{ category.name }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      {% blocktrans %}
+        You are not subscribed to any category.
+      {% endblocktrans %}
+    {% endif %}
+  </div>
 {% endblock %}
