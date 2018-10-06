@@ -14,7 +14,9 @@ class CategoryShop(TemplateMixin):
     template_name = "category_shop.html"
 
     categories_for_purchase = services.CategoriesForPurchase.list
-    load_categories = repositories.categories_without_subscriptions
+    load_categories = repositories.categories
+    exclude_subscriptions = repositories.exclude_categories_with_subscriptions
+    filter_prices = repositories.filter_categories_with_prices
 
     @operation
     def get(categories_for_purchase, render, user):

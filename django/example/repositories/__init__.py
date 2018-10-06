@@ -1,6 +1,8 @@
 from .category import (  # noqa
+    categories,
     categories_with_subscriptions,
-    categories_without_subscriptions,
+    exclude_categories_with_subscriptions,
+    filter_categories_with_prices,
 )
 from .notification import create_notification  # noqa
 from .profile import create_profile  # noqa

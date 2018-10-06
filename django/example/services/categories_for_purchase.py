@@ -10,20 +10,34 @@ class CategoriesForPurchase:
     @argument("user")
     def list(self):
 
-        self.find_categories_without_subscriptions()
+        self.find_categories()
+        self.keep_without_subscriptions()
+        self.keep_with_prices()
         self.show_categories()
 
     # Points.
 
-    def find_categories_without_subscriptions(self):
+    def find_categories(self):
 
-        categories = self.load_categories(self.ctx.user)
+        categories = self.load_categories()
         return Success(categories=categories)
+
+    def keep_without_subscriptions(self):
+
+        categories = self.exclude_subscriptions(self.ctx.categories, self.ctx.user)
+        return Success(no_subscriptions=categories)
+
+    def keep_with_prices(self):
+
+        categories = self.filter_prices(self.ctx.no_subscriptions)
+        return Success(with_prices=categories)
 
     def show_categories(self):
 
-        return Result(dict(**self.ctx("categories")))
+        return Result({"categories": self.ctx.with_prices})
 
     # Dependencies.
 
     load_categories = attrib()
+    exclude_subscriptions = attrib()
+    filter_prices = attrib()
