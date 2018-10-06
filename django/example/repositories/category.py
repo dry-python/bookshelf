@@ -1,4 +1,6 @@
-from example.models import Category
+from django.db.models import Exists, OuterRef
+
+from example.models import Category, Price
 
 
 def categories():
@@ -18,4 +20,5 @@ def exclude_categories_with_subscriptions(categories, user):
 
 def filter_categories_with_prices(categories):
 
-    return categories.filter(prices__isnull=False)
+    prices = Price.objects.filter(category=OuterRef("pk"))
+    return categories.annotate(has_price=Exists(prices)).filter(has_price__isnull=False)
