@@ -12,7 +12,9 @@ class Price(models.Model):
 
     from_date = models.DateField()
 
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    cost = models.DecimalField(max_digits=10, decimal_places=2)
+
+    period = models.IntegerField()
 
     class Meta:
 

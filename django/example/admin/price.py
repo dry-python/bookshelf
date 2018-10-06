@@ -6,4 +6,4 @@ from example.models import Price
 @admin.register(Price)
 class PriceAdmin(admin.ModelAdmin):
 
-    list_display = ["category", "from_date", "amount"]
+    list_display = ["category", "from_date", "cost", "period"]
