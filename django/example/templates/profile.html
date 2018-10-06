@@ -38,6 +38,6 @@
       <b>{% trans 'Balance' %}</b><br>
       {{ profile.balance }}$
     </p>
-    <a href="#">{% trans 'Invest' %}</a>
+    <a href="{% url 'put-money' %}">{% trans 'Invest' %}</a>
   </div>
 {% endblock %}

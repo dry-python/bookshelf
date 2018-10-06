@@ -23,4 +23,5 @@ urlpatterns = [
         name="category-list",
     ),
     path("shop/", login_required(views.CategoryShop.as_view()), name="category-shop"),
+    path("put_money/", login_required(views.PutMoney.as_view()), name="put-money"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
