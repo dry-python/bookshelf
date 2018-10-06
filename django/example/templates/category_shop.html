@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
 {% load i18n %}
+{% load index from example %}
 
 {% block body %}
   <nav>
@@ -16,6 +17,11 @@
         {% for category in categories %}
           <li>
             {{ category.name }}
+            <small>
+              {% blocktrans with price=prices|index:category.pk  %}
+                Starting from {{ price }}$.
+              {% endblocktrans %}
+            </small>
           </li>
         {% endfor %}
       </ul>

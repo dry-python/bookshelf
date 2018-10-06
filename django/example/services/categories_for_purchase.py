@@ -13,6 +13,7 @@ class CategoriesForPurchase:
         self.find_categories()
         self.keep_without_subscriptions()
         self.keep_with_prices()
+        self.find_cheapest_prices()
         self.show_categories()
 
     # Points.
@@ -32,12 +33,18 @@ class CategoriesForPurchase:
         categories = self.filter_prices(self.ctx.no_subscriptions)
         return Success(with_prices=categories)
 
+    def find_cheapest_prices(self):
+
+        prices = self.load_prices(self.ctx.with_prices)
+        return Success(prices=prices)
+
     def show_categories(self):
 
-        return Result({"categories": self.ctx.with_prices})
+        return Result(self.ctx("prices", categories="with_prices"))
 
     # Dependencies.
 
     load_categories = attrib()
     exclude_subscriptions = attrib()
     filter_prices = attrib()
+    load_prices = attrib()

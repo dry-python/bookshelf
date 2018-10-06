@@ -17,6 +17,7 @@ class CategoryShop(TemplateMixin):
     load_categories = repositories.categories
     exclude_subscriptions = repositories.exclude_categories_with_subscriptions
     filter_prices = repositories.filter_categories_with_prices
+    load_prices = repositories.cheapest_price_by_category
 
     @operation
     def get(categories_for_purchase, render, user):

@@ -5,5 +5,6 @@ from .category import (  # noqa
     filter_categories_with_prices,
 )
 from .notification import create_notification  # noqa
+from .price import cheapest_price_by_category  # noqa
 from .profile import create_profile  # noqa
 from .user import create_user, save_password  # noqa
