@@ -25,6 +25,9 @@
                 Starting from {{ price }}$.
               {% endblocktrans %}
             </small>
+            <a href="{% url 'buy-subscription' category.pk %}">
+              {% trans 'Buy' %}
+            </a>
           </li>
         {% endfor %}
       </ul>

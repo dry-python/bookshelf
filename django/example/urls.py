@@ -25,5 +25,10 @@ urlpatterns = [
     path(
         "shop/", login_required(views.CategoryShopView.as_view()), name="category-shop"
     ),
+    path(
+        "subscribe/<int:id>/",
+        login_required(views.BuySubscriptionView.as_view()),
+        name="buy-subscription",
+    ),
     path("put_money/", login_required(views.PutMoneyView.as_view()), name="put-money"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
