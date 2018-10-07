@@ -9,7 +9,7 @@ repositories = Package("example.repositories")
 
 
 @view
-class Profile(TemplateMixin):
+class ProfileView(TemplateMixin):
 
     template_name = "profile.html"
 

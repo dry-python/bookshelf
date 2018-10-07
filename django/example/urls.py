@@ -15,13 +15,15 @@ urlpatterns = [
     path("__debug__/", include(debug_toolbar.urls)),
     path("admin/", admin.site.urls),
     path("login/", LoginView.as_view(), name="login"),
-    path("sign_up/", views.SignUp.as_view(), name="sign-up"),
-    path("profile/", login_required(views.Profile.as_view()), name="profile"),
+    path("sign_up/", views.SignUpView.as_view(), name="sign-up"),
+    path("profile/", login_required(views.ProfileView.as_view()), name="profile"),
     path(
         "categories/",
-        login_required(views.CategoryList.as_view()),
+        login_required(views.CategoryListView.as_view()),
         name="category-list",
     ),
-    path("shop/", login_required(views.CategoryShop.as_view()), name="category-shop"),
-    path("put_money/", login_required(views.PutMoney.as_view()), name="put-money"),
+    path(
+        "shop/", login_required(views.CategoryShopView.as_view()), name="category-shop"
+    ),
+    path("put_money/", login_required(views.PutMoneyView.as_view()), name="put-money"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

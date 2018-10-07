@@ -10,7 +10,7 @@ repositories = Package("example.repositories")
 
 
 @form_view
-class PutMoney(Injector):
+class PutMoneyView(Injector):
 
     template_name = "put_money.html"
     form_class = PutMoneyForm

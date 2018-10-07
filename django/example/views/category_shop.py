@@ -9,7 +9,7 @@ repositories = Package("example.repositories")
 
 
 @view
-class CategoryShop(TemplateMixin):
+class CategoryShopView(TemplateMixin):
 
     template_name = "category_shop.html"
 

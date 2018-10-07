@@ -12,7 +12,7 @@ functions = Package("example.functions")
 
 
 @form_view
-class SignUp(Injector):
+class SignUpView(Injector):
 
     template_name = "sign_up.html"
     form_class = SignUpForm
