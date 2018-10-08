@@ -18,7 +18,9 @@
       <ul>
         {% for category in categories %}
           <li>
-            {{ category.name }}
+            <a href="{{ category.get_absolute_url }}">
+              {{ category.name }}
+            </a>
           </li>
         {% endfor %}
       </ul>
