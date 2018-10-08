@@ -16,4 +16,13 @@
       </li>
     </ol>
   </nav>
+  <div>
+    {% for entry in entries %}
+      <img src="{{ entry.content.url }}">
+    {% empty %}
+      {% blocktrans %}
+        This category is empty.
+      {% endblocktrans %}
+    {% endfor %}
+  </div>
 {% endblock %}
