@@ -18,6 +18,11 @@ urlpatterns = [
     path("sign_up/", views.SignUpView.as_view(), name="sign-up"),
     path("profile/", login_required(views.ProfileView.as_view()), name="profile"),
     path(
+        "notifications/",
+        login_required(views.NotificationListView.as_view()),
+        name="notification-list",
+    ),
+    path(
         "categories/",
         login_required(views.CategoryListView.as_view()),
         name="category-list",
