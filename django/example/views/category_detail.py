@@ -28,6 +28,12 @@ class CategoryDetailView(TemplateMixin):
         if result.is_success:
             return render(result.value)
         elif result.failed_on("find_subscription"):
-            return render({"error": _("You should subscribe to this category.")})
+            return render({
+                "category": result.ctx.category,
+                "error": _("You should subscribe to this category."),
+            })
         elif result.failed_on("check_expiration"):
-            return render({"error": _("Your subscription expires.")})
+            return render({
+                "category": result.ctx.category,
+                "error": _("Your subscription expires."),
+            })

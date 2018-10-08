@@ -35,7 +35,7 @@ class ShopCategoryPrices:
 
     def show_purchase_form(self):
 
-        return Result(self.ctx("prices", "forms"))
+        return Result(self.ctx("category", "prices", "forms"))
 
     # Dependencies.
 
