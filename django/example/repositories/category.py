@@ -1,4 +1,5 @@
 from django.db.models import Exists, OuterRef
+from django.utils.timezone import now
 
 from example.models import Category, Price
 
@@ -15,12 +16,16 @@ def categories():
 
 def categories_with_subscriptions(user):
 
-    return Category.objects.filter(subscriptions__profile__user=user)
+    return Category.objects.filter(
+        subscriptions__profile__user=user, subscriptions__expires__gt=now()
+    )
 
 
 def exclude_categories_with_subscriptions(categories, user):
 
-    return categories.exclude(subscriptions__profile__user=user)
+    return categories.exclude(
+        subscriptions__profile__user=user, subscriptions__expires__gt=now()
+    )
 
 
 def filter_categories_with_prices(categories):

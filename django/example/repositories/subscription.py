@@ -3,7 +3,11 @@ from example.models import Subscription
 
 def load_subscription(user, category):
 
-    return Subscription.objects.filter(profile__user=user, category=category).first()
+    return (
+        Subscription.objects.filter(profile__user=user, category=category)
+        .order_by("-expires")
+        .first()
+    )
 
 
 def create_subscription(profile, category, expires):
