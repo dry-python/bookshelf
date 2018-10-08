@@ -32,7 +32,9 @@ class PutMoneyIntoAccount:
 
     def send_income_notification(self):
 
-        notification = self.send_notification(self.ctx.profile, "income")
+        notification = self.send_notification(
+            "income", self.ctx.profile, self.ctx.amount
+        )
         return Success(notification=notification)
 
     # Dependencies.

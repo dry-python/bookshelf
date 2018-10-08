@@ -8,9 +8,9 @@ class SendNotification:
     messages = attrib()
     create_notification = attrib()
 
-    def do(self, profile, event):
+    def do(self, event, profile, *args):
 
-        message = self.messages.build(profile, event)
+        message = self.messages.build(event, profile, *args)
         notification = self.create_notification(profile, message)
         # TODO: send actual message over websocket.
         return notification
@@ -19,18 +19,18 @@ class SendNotification:
 class Messages:
     """All notification messages."""
 
-    def build(self, profile, event):
+    def build(self, event, profile, *args):
 
-        return getattr(self, "build_" + event)(profile)
+        return getattr(self, "build_" + event)(profile, *args)
 
     def build_welcome(self, profile):
 
         return _("Welcome to our awesome service!")
 
-    def build_subscription(self, profile):
+    def build_subscription(self, profile, category_name):
 
-        return _("You subscribed to ...")
+        return _("You subscribed to %s category") % category_name
 
-    def build_income(self, profile):
+    def build_income(self, profile, amount):
 
-        return _("You've payed ...")
+        return _("You've payed %d$") % amount

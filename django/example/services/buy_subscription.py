@@ -61,7 +61,9 @@ class BuySubscription:
 
     def send_subscription_notification(self):
 
-        notification = self.send_notification(self.ctx.profile, "subscription")
+        notification = self.send_notification(
+            "subscription", self.ctx.profile, self.ctx.category.name
+        )
         return Success(notification=notification)
 
     def show_category(self):
