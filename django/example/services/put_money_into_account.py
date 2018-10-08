@@ -14,7 +14,8 @@ class PutMoneyIntoAccount:
     def put(self):
 
         self.find_profile()
-        self.increment_balance()
+        self.increase_balance()
+        self.send_income_notification()
 
     # Points.
 
@@ -23,14 +24,20 @@ class PutMoneyIntoAccount:
         profile = self.load_profile(self.ctx.user)
         return Success(profile=profile)
 
-    def increment_balance(self):
+    def increase_balance(self):
 
         self.add_balance(self.ctx.profile, self.ctx.amount)
         self.save_profile(self.ctx.profile)
         return Success()
+
+    def send_income_notification(self):
+
+        notification = self.send_notification(self.ctx.profile, "income")
+        return Success(notification=notification)
 
     # Dependencies.
 
     load_profile = attrib()
     add_balance = attrib()
     save_profile = attrib()
+    send_notification = attrib()

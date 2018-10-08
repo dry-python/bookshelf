@@ -30,3 +30,7 @@ class Messages:
     def build_subscription(self, profile):
 
         return _("You subscribed to ...")
+
+    def build_income(self, profile):
+
+        return _("You've payed ...")

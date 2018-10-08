@@ -7,6 +7,7 @@ from example.forms import PutMoneyForm
 
 services = Package("example.services")
 repositories = Package("example.repositories")
+functions = Package("example.functions")
 
 
 @form_view
@@ -19,6 +20,9 @@ class PutMoneyView(Injector):
     load_profile = repositories.load_profile
     add_balance = repositories.add_balance
     save_profile = repositories.save_profile
+    send_notification = functions.SendNotification.do
+    messages = functions.Messages
+    create_notification = repositories.create_notification
 
     amount = this.form.cleaned_data["amount"]
 
