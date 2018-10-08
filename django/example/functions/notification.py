@@ -1,4 +1,5 @@
 from attr import attrib, attrs
+from django.utils.translation import gettext as _
 
 
 @attrs
@@ -24,4 +25,8 @@ class Messages:
 
     def build_welcome(self, profile):
 
-        return "Welcome to our awesome service!"
+        return _("Welcome to our awesome service!")
+
+    def build_subscription(self, profile):
+
+        return _("You subscribed to ...")

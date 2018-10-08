@@ -3,6 +3,11 @@ from django.db.models import Min
 from example.models import Price
 
 
+def load_price(price_id):
+
+    return Price.objects.get(pk=price_id)
+
+
 def prices_for_category(category):
 
     return {price.pk: price for price in Price.objects.filter(category=category)}

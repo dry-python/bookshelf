@@ -7,12 +7,17 @@ from .category import (  # noqa
 )
 from .entry import load_entries  # noqa
 from .notification import create_notification  # noqa
-from .price import cheapest_price_by_category, prices_for_category  # noqa
+from .price import (  # noqa
+    cheapest_price_by_category,
+    load_price,
+    prices_for_category,
+)
 from .profile import (  # noqa
     add_balance,
     create_profile,
+    del_balance,
     load_profile,
     save_profile,
 )
-from .subscription import load_subscription  # noqa
+from .subscription import create_subscription, load_subscription  # noqa
 from .user import create_user, save_password  # noqa

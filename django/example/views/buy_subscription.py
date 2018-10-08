@@ -2,6 +2,8 @@ from dependencies import Package, operation, this
 from dependencies.contrib.django import view
 from django.shortcuts import redirect
 
+from example.forms import SubscribeForm
+
 from .utils import TemplateMixin
 
 
@@ -14,6 +16,7 @@ functions = Package("example.functions")
 class BuySubscriptionView(TemplateMixin):
 
     template_name = "subscribe.html"
+    form_class = SubscribeForm
 
     show_prices = services.ShopCategoryPrices.show
     load_category = repositories.load_category
@@ -28,10 +31,22 @@ class BuySubscriptionView(TemplateMixin):
         return render(show_prices(category_id))
 
     buy_subscription = services.BuySubscription.buy
+    load_price = repositories.load_price
+    load_profile = repositories.load_profile
+    del_balance = repositories.del_balance
+    save_profile = repositories.save_profile
+    calculate_period = functions.calculate_period
+    create_subscription = repositories.create_subscription
+    send_notification = functions.SendNotification.do
+    messages = functions.Messages
+    create_notification = repositories.create_notification
 
     @operation
-    def post(buy_subscription, category_id, user):
+    def post(buy_subscription, category_id, user, form_class, request):
 
-        result = buy_subscription.run(category_id)
+        form = form_class(request.POST, request.FILES)
+        form.is_valid()
+        price_id = form.cleaned_data["price_id"]
+        result = buy_subscription.run(category_id, price_id, user)
         if result.is_success:
             return redirect(result.value)

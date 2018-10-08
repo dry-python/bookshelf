@@ -21,3 +21,8 @@ def save_profile(profile):
 def add_balance(profile, amount):
 
     profile.balance = F("balance") + amount
+
+
+def del_balance(profile, amount):
+
+    profile.balance = F("balance") - amount
