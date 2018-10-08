@@ -6,6 +6,8 @@ from stories import Failure, Result, Success, argument, story
 class BuySubscription:
     """Buy subscription for certain category."""
 
+    # TODO: Ignore repeated subscriptions.
+
     @story
     @argument("category_id")
     @argument("price_id")
