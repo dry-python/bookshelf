@@ -28,7 +28,7 @@ class BuySubscriptionView(TemplateMixin):
     @operation
     def get(show_prices, category_id, render):
 
-        return render(show_prices(category_id))
+        return render(show_prices(category_id, None))
 
     buy_subscription = services.BuySubscription.buy
     load_price = repositories.load_price
@@ -42,7 +42,9 @@ class BuySubscriptionView(TemplateMixin):
     create_notification = repositories.create_notification
 
     @operation
-    def post(buy_subscription, category_id, user, form_class, request):
+    def post(
+        buy_subscription, show_prices, render, category_id, user, form_class, request
+    ):
 
         form = form_class(request.POST, request.FILES)
         form.is_valid()
@@ -50,3 +52,5 @@ class BuySubscriptionView(TemplateMixin):
         result = buy_subscription.run(category_id, price_id, user)
         if result.is_success:
             return redirect(result.value)
+        elif result.failed_on("check_balance"):
+            return render(show_prices(category_id, price_id))

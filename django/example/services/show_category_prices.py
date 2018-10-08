@@ -8,6 +8,7 @@ class ShopCategoryPrices:
 
     @story
     @argument("category_id")
+    @argument("error_in")
     def show(self):
 
         self.find_category()
@@ -29,7 +30,7 @@ class ShopCategoryPrices:
 
     def make_forms(self):
 
-        forms = self.instantiate_forms(self.ctx.prices)
+        forms = self.instantiate_forms(**self.ctx("prices", "error_in"))
         return Success(forms=forms)
 
     def show_purchase_form(self):
