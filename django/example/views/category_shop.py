@@ -14,9 +14,9 @@ class CategoryShopView(TemplateMixin):
     template_name = "category_shop.html"
 
     categories_for_purchase = services.CategoriesForPurchase.list
-    load_categories = repositories.categories
-    exclude_subscriptions = repositories.exclude_categories_with_subscriptions
-    filter_prices = repositories.filter_categories_with_prices
+    load_categories = repositories.load_categories
+    exclude_subscriptions = repositories.category.exclude_subscribed
+    filter_prices = repositories.category.keep_with_prices
     load_prices = repositories.cheapest_price_by_category
 
     @operation

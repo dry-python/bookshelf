@@ -14,7 +14,8 @@ class CategoryListView(TemplateMixin):
     template_name = "category_list.html"
 
     list_categories = services.ListCategories.list
-    load_categories = repositories.categories_with_subscriptions
+    load_categories = repositories.load_categories
+    keep_subscriptions = repositories.category.keep_subscribed
 
     @operation
     def get(list_categories, render, user):
