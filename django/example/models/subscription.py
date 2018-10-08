@@ -23,6 +23,10 @@ class Subscription(models.Model):
         verbose_name = _("subscription")
         verbose_name_plural = _("subscriptions")
 
+    def __str__(self):
+
+        return f"{self.profile} to {self.category}"
+
     def is_expired(self):
 
         return self.expires < now()
