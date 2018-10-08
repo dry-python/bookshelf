@@ -6,6 +6,8 @@ from stories import Result, Success, argument, story
 class CategoriesForPurchase:
     """List categories available to user for purchase."""
 
+    # FIXME: Ignore expired subscriptions.
+
     @story
     @argument("user")
     def list(self):
