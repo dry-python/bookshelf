@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Result, Success, argument, story
+from stories import Failure, Result, Success, argument, story
 
 
 @attrs
@@ -12,7 +12,8 @@ class ShowCategory:
     def show(self):
 
         self.find_category()
-        self.check_subscription()
+        self.find_subscription()
+        self.check_expiration()
         self.find_entries()
         self.show_entries()
 
@@ -23,9 +24,20 @@ class ShowCategory:
         category = self.load_category(self.ctx.category_id)
         return Success(category=category)
 
-    def check_subscription(self):
+    def find_subscription(self):
 
-        return Success()
+        subscription = self.load_subscription(self.ctx.user, self.ctx.category)
+        if subscription:
+            return Success(subscription=subscription)
+        else:
+            return Failure()
+
+    def check_expiration(self):
+
+        if self.ctx.subscription.is_expired():
+            return Failure()
+        else:
+            return Success()
 
     def find_entries(self):
 
@@ -39,4 +51,5 @@ class ShowCategory:
     # Dependencies.
 
     load_category = attrib()
+    load_subscription = attrib()
     load_entries = attrib()

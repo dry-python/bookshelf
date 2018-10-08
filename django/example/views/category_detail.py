@@ -1,5 +1,6 @@
 from dependencies import Package, operation, this
 from dependencies.contrib.django import view
+from django.utils.translation import gettext as _
 
 from .utils import TemplateMixin
 
@@ -15,6 +16,7 @@ class CategoryDetailView(TemplateMixin):
 
     show_category = services.ShowCategory.show
     load_category = repositories.load_category
+    load_subscription = repositories.load_subscription
     load_entries = repositories.load_entries
 
     category_id = this.kwargs["id"]
@@ -22,4 +24,8 @@ class CategoryDetailView(TemplateMixin):
     @operation
     def get(show_category, category_id, user, render):
 
-        return render(show_category(category_id, user))
+        result = show_category.run(category_id, user)
+        if result.is_success:
+            return render(result.value)
+        elif result.failed_on("find_subscription"):
+            return render({"error": _("You should subscribe to this category.")})

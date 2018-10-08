@@ -17,12 +17,16 @@
     </ol>
   </nav>
   <div>
-    {% for entry in entries %}
-      <img src="{{ entry.content.url }}">
-    {% empty %}
-      {% blocktrans %}
-        This category is empty.
-      {% endblocktrans %}
-    {% endfor %}
+    {% if error %}
+      <p>{{ error }}</p>
+    {% else %}
+      {% for entry in entries %}
+        <img src="{{ entry.content.url }}">
+      {% empty %}
+        {% blocktrans %}
+          This category is empty.
+        {% endblocktrans %}
+      {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}

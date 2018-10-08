@@ -14,4 +14,5 @@ from .profile import (  # noqa
     load_profile,
     save_profile,
 )
+from .subscription import load_subscription  # noqa
 from .user import create_user, save_password  # noqa
