@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 
 from .category import Category
@@ -21,3 +22,7 @@ class Subscription(models.Model):
 
         verbose_name = _("subscription")
         verbose_name_plural = _("subscriptions")
+
+    def is_expired(self):
+
+        return self.expires < now()
