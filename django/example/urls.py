@@ -23,6 +23,11 @@ urlpatterns = [
         name="category-list",
     ),
     path(
+        "categories/<int:id>/",
+        views.CategoryDetailView.as_view(),
+        name="category-detail",
+    ),
+    path(
         "shop/", login_required(views.CategoryShopView.as_view()), name="category-shop"
     ),
     path(

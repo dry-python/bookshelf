@@ -1,5 +1,6 @@
 from dependencies import Package, operation, this
 from dependencies.contrib.django import view
+from django.shortcuts import redirect
 
 from .utils import TemplateMixin
 
@@ -26,7 +27,11 @@ class BuySubscriptionView(TemplateMixin):
 
         return render(show_prices(category_id))
 
-    @operation
-    def post(buy_subscription, user):
+    buy_subscription = services.BuySubscription.buy
 
-        pass
+    @operation
+    def post(buy_subscription, category_id, user):
+
+        result = buy_subscription.run(category_id)
+        if result.is_success:
+            return redirect(result.value)

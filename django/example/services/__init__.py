@@ -1,3 +1,4 @@
+from .buy_subscription import BuySubscription  # noqa
 from .categories_for_purchase import CategoriesForPurchase  # noqa
 from .list_categories import ListCategories  # noqa
 from .put_money_into_account import PutMoneyIntoAccount  # noqa
