@@ -3,6 +3,11 @@ from django.db.models import Exists, OuterRef
 from example.models import Category, Price
 
 
+def load_category(category_id):
+
+    return Category.objects.get(pk=category_id)
+
+
 def categories():
 
     return Category.objects.all()

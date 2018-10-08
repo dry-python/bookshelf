@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
 {% load i18n %}
+{% load index from example %}
 
 {% block body %}
   <nav>
@@ -16,4 +17,29 @@
       </li>
     </ol>
   </nav>
+  <div>
+    {% for form in forms %}
+      <div>
+        <p>
+          <b>{% trans 'Price' %}</b>
+          {% with price=prices|index:form.initial.price_id %}
+            {{ price.cost }}
+          {% endwith %}
+        </p>
+        <p>
+          <b>{% trans 'Period' %}</b>
+          {% with price=prices|index:form.initial.price_id %}
+            {% blocktrans with period=price.period %}
+              For {{ period }} days.
+            {% endblocktrans %}
+          {% endwith %}
+        </p>
+        <form method="POST" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="{% trans 'Subscribe' %}">
+        </form>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

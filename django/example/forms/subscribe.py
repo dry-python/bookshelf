@@ -3,4 +3,4 @@ from django import forms
 
 class SubscribeForm(forms.Form):
 
-    pass
+    price_id = forms.CharField(widget=forms.HiddenInput())

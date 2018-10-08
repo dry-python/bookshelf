@@ -3,6 +3,11 @@ from django.db.models import Min
 from example.models import Price
 
 
+def prices_for_category(category):
+
+    return {price.pk: price for price in Price.objects.filter(category=category)}
+
+
 def cheapest_price_by_category(categories):
 
     # FIXME: Filter by most recent date for each category and period.

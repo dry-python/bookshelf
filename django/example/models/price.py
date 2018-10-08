@@ -20,3 +20,7 @@ class Price(models.Model):
 
         verbose_name = _("price")
         verbose_name_plural = _("prices")
+
+    def __str__(self):
+
+        return f"{self.cost} for {self.period} days"
