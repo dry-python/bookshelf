@@ -14,7 +14,9 @@ urlpatterns = [
     path("", RedirectView.as_view(url="/categories/"), name="home"),
     path("__debug__/", include(debug_toolbar.urls)),
     path("admin/", admin.site.urls),
+    # TODO: Do not show login for authenticated user.
     path("login/", LoginView.as_view(), name="login"),
+    # TODO: Do not show sign up for authenticated user.
     path("sign_up/", views.SignUpView.as_view(), name="sign-up"),
     path("profile/", login_required(views.ProfileView.as_view()), name="profile"),
     path(
@@ -29,7 +31,7 @@ urlpatterns = [
     ),
     path(
         "categories/<int:id>/",
-        views.CategoryDetailView.as_view(),
+        login_required(views.CategoryDetailView.as_view()),
         name="category-detail",
     ),
     path(
