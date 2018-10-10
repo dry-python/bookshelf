@@ -8,4 +8,4 @@ def load_notifications(user):
 
 def create_notification(profile, message):
 
-    Notification.objects.create(profile=profile, message=message)
+    return Notification.objects.create(profile=profile, message=message)
