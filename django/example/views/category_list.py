@@ -1,4 +1,4 @@
-from dependencies import Package, operation
+from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
 from .utils import TemplateMixin
@@ -14,8 +14,11 @@ class CategoryListView(TemplateMixin):
     template_name = "category_list.html"
 
     list_categories = services.ListCategories.list
-    load_categories = repositories.load_categories
-    keep_subscriptions = repositories.category.keep_subscribed
+
+    class impl(Injector):
+
+        load_categories = repositories.load_categories
+        keep_subscriptions = repositories.category.keep_subscribed
 
     @operation
     def get(list_categories, render, user):

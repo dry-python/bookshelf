@@ -1,4 +1,4 @@
-from dependencies import Package, operation
+from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
 from .utils import TemplateMixin
@@ -14,7 +14,10 @@ class NotificationListView(TemplateMixin):
     template_name = "notification_list.html"
 
     list_notifications = services.ListNotifications.list
-    load_notifications = repositories.load_notifications
+
+    class impl(Injector):
+
+        load_notifications = repositories.load_notifications
 
     @operation
     def get(list_notifications, render, user):

@@ -1,4 +1,4 @@
-from dependencies import Package, operation
+from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
 from .utils import TemplateMixin
@@ -14,7 +14,10 @@ class ProfileView(TemplateMixin):
     template_name = "profile.html"
 
     show_profile = services.ShowProfile.show
-    load_profile = repositories.load_profile
+
+    class impl(Injector):
+
+        load_profile = repositories.load_profile
 
     @operation
     def get(show_profile, render, user):

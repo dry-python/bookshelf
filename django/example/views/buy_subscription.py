@@ -1,4 +1,4 @@
-from dependencies import Package, operation, this
+from dependencies import Injector, Package, operation, this
 from dependencies.contrib.django import view
 from django.shortcuts import redirect
 
@@ -18,10 +18,17 @@ class BuySubscriptionView(TemplateMixin):
     template_name = "subscribe.html"
     form_class = SubscribeForm
 
-    show_prices = services.ShopCategoryPrices.show
-    load_category = repositories.load_category
-    load_prices = repositories.prices_for_category
-    instantiate_forms = functions.make_subscription_forms
+    show_prices = this.ShowPrices.show_prices
+
+    class ShowPrices(Injector):
+
+        show_prices = services.ShopCategoryPrices.show
+
+        class impl(Injector):
+
+            load_category = repositories.load_category
+            load_prices = repositories.prices_for_category
+            instantiate_forms = functions.make_subscription_forms
 
     category_id = this.kwargs["id"]
 
@@ -30,16 +37,24 @@ class BuySubscriptionView(TemplateMixin):
 
         return render(show_prices(category_id, None))
 
-    buy_subscription = services.BuySubscription.buy
-    load_price = repositories.load_price
-    load_profile = repositories.load_profile
-    del_balance = repositories.del_balance
-    save_profile = repositories.save_profile
-    calculate_period = functions.calculate_period
-    create_subscription = repositories.create_subscription
-    send_notification = functions.SendNotification.do
-    messages = functions.Messages
-    create_notification = repositories.create_notification
+    buy_subscription = this.BuySubscription.buy_subscription
+
+    class BuySubscription(Injector):
+
+        buy_subscription = services.BuySubscription.buy
+
+        class impl(Injector):
+
+            load_category = repositories.load_category
+            load_price = repositories.load_price
+            load_profile = repositories.load_profile
+            del_balance = repositories.del_balance
+            save_profile = repositories.save_profile
+            calculate_period = functions.calculate_period
+            create_subscription = repositories.create_subscription
+            send_notification = functions.SendNotification.do
+            messages = functions.Messages
+            create_notification = repositories.create_notification
 
     @operation
     def post(

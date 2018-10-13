@@ -17,12 +17,15 @@ class PutMoneyView(Injector):
     form_class = PutMoneyForm
 
     put_money_into_account = services.PutMoneyIntoAccount.put
-    load_profile = repositories.load_profile
-    add_balance = repositories.add_balance
-    save_profile = repositories.save_profile
-    send_notification = functions.SendNotification.do
-    messages = functions.Messages
-    create_notification = repositories.create_notification
+
+    class impl(Injector):
+
+        load_profile = repositories.load_profile
+        add_balance = repositories.add_balance
+        save_profile = repositories.save_profile
+        send_notification = functions.SendNotification.do
+        messages = functions.Messages
+        create_notification = repositories.create_notification
 
     amount = this.form.cleaned_data["amount"]
 

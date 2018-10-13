@@ -1,4 +1,4 @@
-from dependencies import Package, operation, this
+from dependencies import Injector, Package, operation, this
 from dependencies.contrib.django import view
 from django.utils.translation import gettext as _
 
@@ -15,9 +15,12 @@ class CategoryDetailView(TemplateMixin):
     template_name = "category_detail.html"
 
     show_category = services.ShowCategory.show
-    load_category = repositories.load_category
-    load_subscription = repositories.load_subscription
-    load_entries = repositories.load_entries
+
+    class impl(Injector):
+
+        load_category = repositories.load_category
+        load_subscription = repositories.load_subscription
+        load_entries = repositories.load_entries
 
     category_id = this.kwargs["id"]
 
