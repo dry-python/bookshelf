@@ -10,6 +10,7 @@ dependencies = {editable = true, ref = "ecd379fe1eaadee71b0e062271114f31419fb358
 attrs = "*"
 django-debug-toolbar = "*"
 django-extensions = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
