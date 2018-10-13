@@ -1,15 +1,14 @@
 from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
-from .utils import TemplateMixin
-
 
 services = Package("example.services")
 repositories = Package("example.repositories")
+functions = Package("example.functions")
 
 
 @view
-class CategoryShopView(TemplateMixin):
+class CategoryShopView(Injector):
 
     template_name = "category_shop.html"
 
@@ -21,6 +20,8 @@ class CategoryShopView(TemplateMixin):
         exclude_subscriptions = repositories.category.exclude_subscribed
         filter_prices = repositories.category.keep_with_prices
         load_prices = repositories.cheapest_price_by_category
+
+    render = functions.Render
 
     @operation
     def get(categories_for_purchase, render, user):

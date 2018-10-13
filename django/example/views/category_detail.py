@@ -2,15 +2,14 @@ from dependencies import Injector, Package, operation, this
 from dependencies.contrib.django import view
 from django.utils.translation import gettext as _
 
-from .utils import TemplateMixin
-
 
 services = Package("example.services")
 repositories = Package("example.repositories")
+functions = Package("example.functions")
 
 
 @view
-class CategoryDetailView(TemplateMixin):
+class CategoryDetailView(Injector):
 
     template_name = "category_detail.html"
 
@@ -22,6 +21,8 @@ class CategoryDetailView(TemplateMixin):
         load_subscription = repositories.load_subscription
         load_entries = repositories.load_entries
 
+    render = functions.Render
+
     category_id = this.kwargs["id"]
 
     @operation
@@ -31,12 +32,16 @@ class CategoryDetailView(TemplateMixin):
         if result.is_success:
             return render(result.value)
         elif result.failed_on("find_subscription"):
-            return render({
-                "category": result.ctx.category,
-                "error": _("You should subscribe to this category."),
-            })
+            return render(
+                {
+                    "category": result.ctx.category,
+                    "error": _("You should subscribe to this category."),
+                }
+            )
         elif result.failed_on("check_expiration"):
-            return render({
-                "category": result.ctx.category,
-                "error": _("Your subscription expires."),
-            })
+            return render(
+                {
+                    "category": result.ctx.category,
+                    "error": _("Your subscription expires."),
+                }
+            )
