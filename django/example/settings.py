@@ -44,6 +44,8 @@ ROOT_URLCONF = "example.urls"
 
 LOGIN_URL = "/login/"
 
+LOGIN_REDIRECT_URL = "/profile/"
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
