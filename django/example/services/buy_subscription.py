@@ -8,6 +8,8 @@ class BuySubscription:
 
     # TODO: Ignore repeated subscriptions.
 
+    impl = attrib()
+
     @story
     @argument("category_id")
     @argument("price_id")
@@ -23,21 +25,19 @@ class BuySubscription:
         self.send_subscription_notification()
         self.show_category()
 
-    # Points.
-
     def find_category(self):
 
-        category = self.load_category(self.ctx.category_id)
+        category = self.impl.load_category(self.ctx.category_id)
         return Success(category=category)
 
     def find_price(self):
 
-        price = self.load_price(self.ctx.price_id)
+        price = self.impl.load_price(self.ctx.price_id)
         return Success(price=price)
 
     def find_profile(self):
 
-        profile = self.load_profile(self.ctx.user)
+        profile = self.impl.load_profile(self.ctx.user)
         return Success(profile=profile)
 
     def check_balance(self):
@@ -49,21 +49,21 @@ class BuySubscription:
 
     def persist_payment(self):
 
-        self.del_balance(self.ctx.profile, self.ctx.price.cost)
-        self.save_profile(self.ctx.profile)
+        self.impl.del_balance(self.ctx.profile, self.ctx.price.cost)
+        self.impl.save_profile(self.ctx.profile)
         return Success()
 
     def persist_subscription(self):
 
-        expires = self.calculate_period(self.ctx.price.period)
-        subscription = self.create_subscription(
+        expires = self.impl.calculate_period(self.ctx.price.period)
+        subscription = self.impl.create_subscription(
             self.ctx.profile, self.ctx.category, expires
         )
         return Success(subscription=subscription)
 
     def send_subscription_notification(self):
 
-        notification = self.send_notification(
+        notification = self.impl.send_notification(
             "subscription", self.ctx.profile, self.ctx.category.name
         )
         return Success(notification=notification)
@@ -71,14 +71,3 @@ class BuySubscription:
     def show_category(self):
 
         return Result(self.ctx.category)
-
-    # Dependencies.
-
-    load_category = attrib()
-    load_price = attrib()
-    load_profile = attrib()
-    del_balance = attrib()
-    save_profile = attrib()
-    calculate_period = attrib()
-    create_subscription = attrib()
-    send_notification = attrib()
