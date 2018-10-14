@@ -28,7 +28,7 @@ class BuySubscriptionView(Injector):
             load_prices = repositories.prices_for_category
             instantiate_forms = functions.make_subscription_forms
 
-    render = functions.Render
+    render = functions.Render.do
 
     category_id = this.kwargs["id"]
 

@@ -21,7 +21,7 @@ class CategoryDetailView(Injector):
         load_subscription = repositories.load_subscription
         load_entries = repositories.load_entries
 
-    render = functions.Render
+    render = functions.Render.do
 
     category_id = this.kwargs["id"]
 

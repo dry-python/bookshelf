@@ -21,7 +21,7 @@ class CategoryShopView(Injector):
         filter_prices = repositories.category.keep_with_prices
         load_prices = repositories.cheapest_price_by_category
 
-    render = functions.Render
+    render = functions.Render.do
 
     @operation
     def get(categories_for_purchase, render, user):

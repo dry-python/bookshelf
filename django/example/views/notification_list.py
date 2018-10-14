@@ -18,7 +18,7 @@ class NotificationListView(Injector):
 
         load_notifications = repositories.load_notifications
 
-    render = functions.Render
+    render = functions.Render.do
 
     @operation
     def get(list_notifications, render, user):

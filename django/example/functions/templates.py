@@ -1,14 +1,14 @@
+from attr import attrib, attrs
 from django import shortcuts
 
 
+@attrs
 class Render:
     """Injectable shortcut."""
 
-    def __init__(self, template_name, request):
+    template_name = attrib()
+    request = attrib()
 
-        self.template_name = template_name
-        self.request = request
-
-    def __call__(self, context=None):
+    def do(self, context=None):
 
         return shortcuts.render(self.request, self.template_name, context)

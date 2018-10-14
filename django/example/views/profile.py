@@ -18,7 +18,7 @@ class ProfileView(Injector):
 
         load_profile = repositories.load_profile
 
-    render = functions.Render
+    render = functions.Render.do
 
     @operation
     def get(show_profile, render, user):

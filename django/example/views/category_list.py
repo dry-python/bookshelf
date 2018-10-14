@@ -19,7 +19,7 @@ class CategoryListView(Injector):
         load_categories = repositories.load_categories
         keep_subscriptions = repositories.category.keep_subscribed
 
-    render = functions.Render
+    render = functions.Render.do
 
     @operation
     def get(list_categories, render, user):
