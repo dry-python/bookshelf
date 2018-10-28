@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8cc2f68e3b869bcd67ed5f0defba5f83cdc4e6d16ea93acf898dafd33869c470"
+            "sha256": "65356dc2220618b21b1df78a47fe977736a2cb278269003ce1616bc000ffa310"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -27,7 +27,7 @@
         "dependencies": {
             "editable": true,
             "git": "https://github.com/dry-python/dependencies.git",
-            "ref": "ecd379fe1eaadee71b0e062271114f31419fb358"
+            "ref": "162cf64bef55966513fa1cab3f198e5b1a11fcf9"
         },
         "django": {
             "hashes": [
@@ -55,18 +55,18 @@
         },
         "djangorestframework": {
             "hashes": [
-                "sha256:b6714c3e4b0f8d524f193c91ecf5f5450092c2145439ac2769711f7eba89a9d9",
-                "sha256:c375e4f95a3a64fccac412e36fb42ba36881e52313ec021ef410b40f67cddca4"
+                "sha256:607865b0bb1598b153793892101d881466bd5a991de12bd6229abb18b1c86136",
+                "sha256:63f76cbe1e7d12b94c357d7e54401103b2e52aef0f7c1650d6c820ad708776e5"
             ],
             "index": "pypi",
-            "version": "==3.8.2"
+            "version": "==3.9.0"
         },
         "pytz": {
             "hashes": [
-                "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
-                "sha256:ffb9ef1de172603304d9d2819af6f5ece76f2e85ec10692a524dd876e72bf277"
+                "sha256:642253af8eae734d1509fc6ac9c1aee5e5b69d76392660889979b9870610a46b",
+                "sha256:91e3ccf2c344ffaa6defba1ce7f38f97026943f675b7703f44789768e4cb0ece"
             ],
-            "version": "==2018.5"
+            "version": "==2018.6"
         },
         "six": {
             "hashes": [
@@ -85,7 +85,7 @@
         "stories": {
             "editable": true,
             "git": "https://github.com/dry-python/stories.git",
-            "ref": "c6fa83c4385a24d6a59c1e1980b4460a45c4a64d"
+            "ref": "e7a6927adb84c7e08bd803b9591623e747f651ec"
         }
     },
     "develop": {}
