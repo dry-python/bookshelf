@@ -15,11 +15,11 @@ class ListNotifications:
         self.find_notifications()
         self.show_notifications()
 
-    def find_notifications(self):
+    def find_notifications(self, ctx):
 
-        notifications = self.impl.load_notifications(self.ctx.user)
+        notifications = self.impl.load_notifications(ctx.user)
         return Success(notifications=notifications)
 
-    def show_notifications(self):
+    def show_notifications(self, ctx):
 
-        return Result(self.ctx("notifications"))
+        return Result(ctx("notifications"))

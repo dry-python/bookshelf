@@ -18,26 +18,26 @@ class CategoriesForPurchase:
         self.find_cheapest_prices()
         self.show_categories()
 
-    def find_categories(self):
+    def find_categories(self, ctx):
 
         categories = self.impl.load_categories()
         return Success(categories=categories)
 
-    def keep_without_subscriptions(self):
+    def keep_without_subscriptions(self, ctx):
 
-        categories = self.impl.exclude_subscriptions(self.ctx.categories, self.ctx.user)
+        categories = self.impl.exclude_subscriptions(ctx.categories, ctx.user)
         return Success(no_subscriptions=categories)
 
-    def keep_with_prices(self):
+    def keep_with_prices(self, ctx):
 
-        categories = self.impl.filter_prices(self.ctx.no_subscriptions)
+        categories = self.impl.filter_prices(ctx.no_subscriptions)
         return Success(with_prices=categories)
 
-    def find_cheapest_prices(self):
+    def find_cheapest_prices(self, ctx):
 
-        prices = self.impl.load_prices(self.ctx.with_prices)
+        prices = self.impl.load_prices(ctx.with_prices)
         return Success(prices=prices)
 
-    def show_categories(self):
+    def show_categories(self, ctx):
 
-        return Result(self.ctx("prices", categories="with_prices"))
+        return Result(ctx("prices", categories="with_prices"))

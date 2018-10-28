@@ -25,49 +25,47 @@ class BuySubscription:
         self.send_subscription_notification()
         self.show_category()
 
-    def find_category(self):
+    def find_category(self, ctx):
 
-        category = self.impl.load_category(self.ctx.category_id)
+        category = self.impl.load_category(ctx.category_id)
         return Success(category=category)
 
-    def find_price(self):
+    def find_price(self, ctx):
 
-        price = self.impl.load_price(self.ctx.price_id)
+        price = self.impl.load_price(ctx.price_id)
         return Success(price=price)
 
-    def find_profile(self):
+    def find_profile(self, ctx):
 
-        profile = self.impl.load_profile(self.ctx.user)
+        profile = self.impl.load_profile(ctx.user)
         return Success(profile=profile)
 
-    def check_balance(self):
+    def check_balance(self, ctx):
 
-        if self.ctx.profile.balance > self.ctx.price.cost:
+        if ctx.profile.balance > ctx.price.cost:
             return Success()
         else:
             return Failure()
 
-    def persist_payment(self):
+    def persist_payment(self, ctx):
 
-        self.impl.del_balance(self.ctx.profile, self.ctx.price.cost)
-        self.impl.save_profile(self.ctx.profile)
+        self.impl.del_balance(ctx.profile, ctx.price.cost)
+        self.impl.save_profile(ctx.profile)
         return Success()
 
-    def persist_subscription(self):
+    def persist_subscription(self, ctx):
 
-        expires = self.impl.calculate_period(self.ctx.price.period)
-        subscription = self.impl.create_subscription(
-            self.ctx.profile, self.ctx.category, expires
-        )
+        expires = self.impl.calculate_period(ctx.price.period)
+        subscription = self.impl.create_subscription(ctx.profile, ctx.category, expires)
         return Success(subscription=subscription)
 
-    def send_subscription_notification(self):
+    def send_subscription_notification(self, ctx):
 
         notification = self.impl.send_notification(
-            "subscription", self.ctx.profile, self.ctx.category.name
+            "subscription", ctx.profile, ctx.category.name
         )
         return Success(notification=notification)
 
-    def show_category(self):
+    def show_category(self, ctx):
 
-        return Result(self.ctx.category)
+        return Result(ctx.category)

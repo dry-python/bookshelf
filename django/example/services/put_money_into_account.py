@@ -19,20 +19,18 @@ class PutMoneyIntoAccount:
         self.increase_balance()
         self.send_income_notification()
 
-    def find_profile(self):
+    def find_profile(self, ctx):
 
-        profile = self.impl.load_profile(self.ctx.user)
+        profile = self.impl.load_profile(ctx.user)
         return Success(profile=profile)
 
-    def increase_balance(self):
+    def increase_balance(self, ctx):
 
-        self.impl.add_balance(self.ctx.profile, self.ctx.amount)
-        self.impl.save_profile(self.ctx.profile)
+        self.impl.add_balance(ctx.profile, ctx.amount)
+        self.impl.save_profile(ctx.profile)
         return Success()
 
-    def send_income_notification(self):
+    def send_income_notification(self, ctx):
 
-        notification = self.impl.send_notification(
-            "income", self.ctx.profile, self.ctx.amount
-        )
+        notification = self.impl.send_notification("income", ctx.profile, ctx.amount)
         return Success(notification=notification)

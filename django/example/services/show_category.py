@@ -19,31 +19,31 @@ class ShowCategory:
         self.find_entries()
         self.show_entries()
 
-    def find_category(self):
+    def find_category(self, ctx):
 
-        category = self.impl.load_category(self.ctx.category_id)
+        category = self.impl.load_category(ctx.category_id)
         return Success(category=category)
 
-    def find_subscription(self):
+    def find_subscription(self, ctx):
 
-        subscription = self.impl.load_subscription(self.ctx.user, self.ctx.category)
+        subscription = self.impl.load_subscription(ctx.user, ctx.category)
         if subscription:
             return Success(subscription=subscription)
         else:
             return Failure()
 
-    def check_expiration(self):
+    def check_expiration(self, ctx):
 
-        if self.ctx.subscription.is_expired():
+        if ctx.subscription.is_expired():
             return Failure()
         else:
             return Success()
 
-    def find_entries(self):
+    def find_entries(self, ctx):
 
-        entries = self.impl.load_entries(self.ctx.category)
+        entries = self.impl.load_entries(ctx.category)
         return Success(entries=entries)
 
-    def show_entries(self):
+    def show_entries(self, ctx):
 
-        return Result(self.ctx("category", "entries"))
+        return Result(ctx("category", "entries"))

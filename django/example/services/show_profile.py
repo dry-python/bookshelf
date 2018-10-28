@@ -15,11 +15,11 @@ class ShowProfile:
         self.find_profile()
         self.show_profile()
 
-    def find_profile(self):
+    def find_profile(self, ctx):
 
-        profile = self.impl.load_profile(self.ctx.user)
+        profile = self.impl.load_profile(ctx.user)
         return Success(profile=profile)
 
-    def show_profile(self):
+    def show_profile(self, ctx):
 
-        return Result(self.ctx("user", "profile"))
+        return Result(ctx("user", "profile"))

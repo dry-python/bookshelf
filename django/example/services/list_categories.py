@@ -16,16 +16,16 @@ class ListCategories:
         self.keep_with_subscriptions()
         self.show_categories()
 
-    def find_categories(self):
+    def find_categories(self, ctx):
 
         categories = self.impl.load_categories()
         return Success(categories=categories)
 
-    def keep_with_subscriptions(self):
+    def keep_with_subscriptions(self, ctx):
 
-        categories = self.impl.keep_subscriptions(self.ctx.categories, self.ctx.user)
+        categories = self.impl.keep_subscriptions(ctx.categories, ctx.user)
         return Success(subscribed=categories)
 
-    def show_categories(self):
+    def show_categories(self, ctx):
 
-        return Result({"categories": self.ctx.subscribed})
+        return Result({"categories": ctx.subscribed})
