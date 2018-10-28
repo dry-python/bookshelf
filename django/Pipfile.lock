@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "65356dc2220618b21b1df78a47fe977736a2cb278269003ce1616bc000ffa310"
+            "sha256": "af34a2d55ffd8e255b9d39e8c7dfc282e9d5d24f35620d45d6ad50ed836015dc"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -85,7 +85,7 @@
         "stories": {
             "editable": true,
             "git": "https://github.com/dry-python/stories.git",
-            "ref": "e7a6927adb84c7e08bd803b9591623e747f651ec"
+            "ref": "47e4d15fdaa12e9740d76e763b689476d3f03e25"
         }
     },
     "develop": {}
