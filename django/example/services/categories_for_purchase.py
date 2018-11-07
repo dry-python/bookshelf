@@ -10,13 +10,13 @@ class CategoriesForPurchase:
 
     @story
     @argument("user")
-    def list(self):
+    def list(I):
 
-        self.find_categories()
-        self.keep_without_subscriptions()
-        self.keep_with_prices()
-        self.find_cheapest_prices()
-        self.show_categories()
+        I.find_categories
+        I.keep_without_subscriptions
+        I.keep_with_prices
+        I.find_cheapest_prices
+        I.show_categories
 
     def find_categories(self, ctx):
 

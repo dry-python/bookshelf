@@ -10,10 +10,10 @@ class ListNotifications:
 
     @story
     @argument("user")
-    def list(self):
+    def list(I):
 
-        self.find_notifications()
-        self.show_notifications()
+        I.find_notifications
+        I.show_notifications
 
     def find_notifications(self, ctx):
 

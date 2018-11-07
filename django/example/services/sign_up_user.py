@@ -10,15 +10,15 @@ class SignUp:
 
     @story
     @argument("data")
-    def register_user(self):
+    def register_user(I):
 
-        self.compare_passwords()
-        self.validate_password_strength()
-        self.persist_user()
-        self.encrypt_password()
-        self.persist_profile()
-        self.login_user()
-        self.send_welcome_notification()
+        I.compare_passwords
+        I.validate_password_strength
+        I.persist_user
+        I.encrypt_password
+        I.persist_profile
+        I.login_user
+        I.send_welcome_notification
 
     def compare_passwords(self, ctx):
 

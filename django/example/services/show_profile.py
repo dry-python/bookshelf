@@ -10,10 +10,10 @@ class ShowProfile:
 
     @story
     @argument("user")
-    def show(self):
+    def show(I):
 
-        self.find_profile()
-        self.show_profile()
+        I.find_profile
+        I.show_profile
 
     def find_profile(self, ctx):
 

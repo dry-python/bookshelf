@@ -13,11 +13,11 @@ class PutMoneyIntoAccount:
     @story
     @argument("user")
     @argument("amount")
-    def put(self):
+    def put(I):
 
-        self.find_profile()
-        self.increase_balance()
-        self.send_income_notification()
+        I.find_profile
+        I.increase_balance
+        I.send_income_notification
 
     def find_profile(self, ctx):
 

@@ -11,12 +11,12 @@ class ShopCategoryPrices:
     @story
     @argument("category_id")
     @argument("error_in")
-    def show(self):
+    def show(I):
 
-        self.find_category()
-        self.find_prices()
-        self.make_forms()
-        self.show_purchase_form()
+        I.find_category
+        I.find_prices
+        I.make_forms
+        I.show_purchase_form
 
     def find_category(self, ctx):
 

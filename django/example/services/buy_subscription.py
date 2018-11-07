@@ -14,16 +14,16 @@ class BuySubscription:
     @argument("category_id")
     @argument("price_id")
     @argument("user")
-    def buy(self):
+    def buy(I):
 
-        self.find_category()
-        self.find_price()
-        self.find_profile()
-        self.check_balance()
-        self.persist_payment()
-        self.persist_subscription()
-        self.send_subscription_notification()
-        self.show_category()
+        I.find_category
+        I.find_price
+        I.find_profile
+        I.check_balance
+        I.persist_payment
+        I.persist_subscription
+        I.send_subscription_notification
+        I.show_category
 
     def find_category(self, ctx):
 

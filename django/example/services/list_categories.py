@@ -10,11 +10,11 @@ class ListCategories:
 
     @story
     @argument("user")
-    def list(self):
+    def list(I):
 
-        self.find_categories()
-        self.keep_with_subscriptions()
-        self.show_categories()
+        I.find_categories
+        I.keep_with_subscriptions
+        I.show_categories
 
     def find_categories(self, ctx):
 

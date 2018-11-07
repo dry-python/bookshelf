@@ -11,13 +11,13 @@ class ShowCategory:
     @story
     @argument("category_id")
     @argument("user")
-    def show(self):
+    def show(I):
 
-        self.find_category()
-        self.find_subscription()
-        self.check_expiration()
-        self.find_entries()
-        self.show_entries()
+        I.find_category
+        I.find_subscription
+        I.check_expiration
+        I.find_entries
+        I.show_entries
 
     def find_category(self, ctx):
 
