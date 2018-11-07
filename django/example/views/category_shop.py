@@ -2,8 +2,7 @@ from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
 
-services = Package("example.services")
-repositories = Package("example.repositories")
+implemented = Package("example.implemented")
 functions = Package("example.functions")
 
 
@@ -12,18 +11,11 @@ class CategoryShopView(Injector):
 
     template_name = "category_shop.html"
 
-    categories_for_purchase = services.CategoriesForPurchase.list
-
-    class impl(Injector):
-
-        load_categories = repositories.load_categories
-        exclude_subscriptions = repositories.category.exclude_subscribed
-        filter_prices = repositories.category.keep_with_prices
-        load_prices = repositories.cheapest_price_by_category
+    categories_for_purchase = implemented.CategoriesForPurchase.list
 
     render = functions.Render.do
 
     @operation
-    def get(categories_for_purchase, render, user):
+    def get(categories_for_purchase, user, render):
 
         return render(categories_for_purchase(user))

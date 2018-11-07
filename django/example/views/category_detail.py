@@ -3,8 +3,7 @@ from dependencies.contrib.django import view
 from django.utils.translation import gettext as _
 
 
-services = Package("example.services")
-repositories = Package("example.repositories")
+implemented = Package("example.implemented")
 functions = Package("example.functions")
 
 
@@ -13,17 +12,11 @@ class CategoryDetailView(Injector):
 
     template_name = "category_detail.html"
 
-    show_category = services.ShowCategory.show
-
-    class impl(Injector):
-
-        load_category = repositories.load_category
-        load_subscription = repositories.load_subscription
-        load_entries = repositories.load_entries
-
-    render = functions.Render.do
+    show_category = implemented.ShowCategory.show
 
     category_id = this.kwargs["id"]
+
+    render = functions.Render.do
 
     @operation
     def get(show_category, category_id, user, render):

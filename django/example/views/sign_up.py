@@ -6,8 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from example.forms import SignUpForm
 
 
-services = Package("example.services")
-repositories = Package("example.repositories")
+implemented = Package("example.implemented")
 functions = Package("example.functions")
 
 
@@ -17,20 +16,7 @@ class SignUpView(Injector):
     template_name = "sign_up.html"
     form_class = SignUpForm
 
-    sign_up = services.SignUp.register_user
-
-    class impl(Injector):
-
-        validate_password = functions.validate_password
-        create_user = repositories.create_user
-        save_password = repositories.save_password
-        create_profile = repositories.create_profile
-        store_user_in_session = functions.StoreUserInSession.do
-        send_notification = functions.SendNotification.do
-        messages = functions.Messages
-        create_notification = repositories.create_notification
-
-        request = (this << 1).request
+    sign_up = implemented.SignUp.register_user
 
     data = this.form.cleaned_data
 

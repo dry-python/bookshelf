@@ -5,8 +5,7 @@ from django.shortcuts import redirect
 from example.forms import SubscribeForm
 
 
-services = Package("example.services")
-repositories = Package("example.repositories")
+implemented = Package("example.implemented")
 functions = Package("example.functions")
 
 
@@ -16,45 +15,17 @@ class BuySubscriptionView(Injector):
     template_name = "subscribe.html"
     form_class = SubscribeForm
 
-    show_prices = this.ShowPrices.show_prices
-
-    class ShowPrices(Injector):
-
-        show_prices = services.ShopCategoryPrices.show
-
-        class impl(Injector):
-
-            load_category = repositories.load_category
-            load_prices = repositories.prices_for_category
-            instantiate_forms = functions.make_subscription_forms
-
-    render = functions.Render.do
+    show_prices = implemented.ShowPrices.show_prices
+    buy_subscription = implemented.BuySubscription.buy_subscription
 
     category_id = this.kwargs["id"]
+
+    render = functions.Render.do
 
     @operation
     def get(show_prices, category_id, render):
 
         return render(show_prices(category_id, None))
-
-    buy_subscription = this.BuySubscription.buy_subscription
-
-    class BuySubscription(Injector):
-
-        buy_subscription = services.BuySubscription.buy
-
-        class impl(Injector):
-
-            load_category = repositories.load_category
-            load_price = repositories.load_price
-            load_profile = repositories.load_profile
-            del_balance = repositories.del_balance
-            save_profile = repositories.save_profile
-            calculate_period = functions.calculate_period
-            create_subscription = repositories.create_subscription
-            send_notification = functions.SendNotification.do
-            messages = functions.Messages
-            create_notification = repositories.create_notification
 
     @operation
     def post(

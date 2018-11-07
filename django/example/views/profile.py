@@ -2,8 +2,7 @@ from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
 
-services = Package("example.services")
-repositories = Package("example.repositories")
+implemented = Package("example.implemented")
 functions = Package("example.functions")
 
 
@@ -12,11 +11,7 @@ class ProfileView(Injector):
 
     template_name = "profile.html"
 
-    show_profile = services.ShowProfile.show
-
-    class impl(Injector):
-
-        load_profile = repositories.load_profile
+    show_profile = implemented.ShowProfile.show
 
     render = functions.Render.do
 
