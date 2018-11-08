@@ -5,8 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
-stories = {editable = true, ref = "47e4d15fdaa12e9740d76e763b689476d3f03e25", git = "https://github.com/dry-python/stories.git"}
-dependencies = {editable = true, ref = "162cf64bef55966513fa1cab3f198e5b1a11fcf9", git = "https://github.com/dry-python/dependencies.git"}
+stories = {editable = true, ref = "ccf2ac1b43d9669ac760bb0a8ebad0a83911b419", git = "https://github.com/dry-python/stories.git"}
+dependencies = {editable = true, ref = "f71fcbb003ea173db423d1d020037a9c010bca42", git = "https://github.com/dry-python/dependencies.git"}
 attrs = "*"
 django-debug-toolbar = "*"
 django-extensions = "*"
