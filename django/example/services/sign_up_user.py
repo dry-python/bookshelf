@@ -10,6 +10,7 @@ class SignUp:
 
     @story
     @argument("data")
+    @argument("request")
     def register_user(I):
 
         I.compare_passwords
@@ -53,7 +54,7 @@ class SignUp:
 
     def login_user(self, ctx):
 
-        self.impl.store_user_in_session(ctx.user)
+        self.impl.store_user_in_session(ctx.request, ctx.user)
         return Success()
 
     def send_welcome_notification(self, ctx):

@@ -1,5 +1,7 @@
-from dependencies import Injector, Package, this
+from dependencies import Injector, Package
 
+
+django = Package("django")
 
 services = Package("example.services")
 repositories = Package("example.repositories")
@@ -110,9 +112,7 @@ class SignUp(Injector):
         create_user = repositories.create_user
         save_password = repositories.save_password
         create_profile = repositories.create_profile
-        store_user_in_session = functions.StoreUserInSession.do
+        store_user_in_session = django.contrib.auth.login
         send_notification = functions.SendNotification.do
         messages = functions.Messages
         create_notification = repositories.create_notification
-
-        request = (this << 2).request

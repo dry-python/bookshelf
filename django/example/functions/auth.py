@@ -1,5 +1,4 @@
-from attr import attrib, attrs
-from django.contrib.auth import login, password_validation
+from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 
 
@@ -11,13 +10,3 @@ def validate_password(raw_password):
         return False, error
     else:
         return True, None
-
-
-@attrs
-class StoreUserInSession:
-
-    request = attrib()
-
-    def do(self, user):
-
-        login(self.request, user)
