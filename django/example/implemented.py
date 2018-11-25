@@ -28,7 +28,7 @@ class BuySubscription(Injector):
         load_category = repositories.load_category
         load_price = repositories.load_price
         load_profile = repositories.load_profile
-        del_balance = repositories.del_balance
+        decrease_balance = repositories.decrease_balance
         save_profile = repositories.save_profile
         calculate_period = functions.calculate_period
         create_subscription = repositories.create_subscription

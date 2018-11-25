@@ -23,6 +23,6 @@ def add_balance(profile, amount):
     profile.balance = F("balance") + amount
 
 
-def del_balance(profile, amount):
+def decrease_balance(profile, amount):
 
     profile.balance = F("balance") - amount

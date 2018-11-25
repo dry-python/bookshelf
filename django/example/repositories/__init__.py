@@ -9,7 +9,7 @@ from .price import (  # noqa
 from .profile import (  # noqa
     add_balance,
     create_profile,
-    del_balance,
+    decrease_balance,
     load_profile,
     save_profile,
 )

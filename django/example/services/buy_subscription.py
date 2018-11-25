@@ -49,7 +49,7 @@ class BuySubscription:
 
     def persist_payment(self, ctx):
 
-        self.impl.del_balance(ctx.profile, ctx.price.cost)
+        self.impl.decrease_balance(ctx.profile, ctx.price.cost)
         self.impl.save_profile(ctx.profile)
         return Success()
 
