@@ -1,0 +1,7 @@
+Django
+djangorestframework
+django-debug-toolbar
+django-extensions
+attrs
+-e git+https://github.com/dry-python/dependencies.git@f71fcbb003ea173db423d1d020037a9c010bca42#egg=dependencies
+-e git+https://github.com/dry-python/stories.git@ccf2ac1b43d9669ac760bb0a8ebad0a83911b419#egg=stories
