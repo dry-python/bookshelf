@@ -6,8 +6,6 @@ from stories import Result, Success, argument, story
 class ShopCategoryPrices:
     """Show purchase variants for category."""
 
-    impl = attrib()
-
     @story
     @argument("category_id")
     @argument("error_in")
@@ -18,21 +16,29 @@ class ShopCategoryPrices:
         I.make_forms
         I.show_purchase_form
 
+    # Steps.
+
     def find_category(self, ctx):
 
-        category = self.impl.load_category(ctx.category_id)
+        category = self.load_category(ctx.category_id)
         return Success(category=category)
 
     def find_prices(self, ctx):
 
-        prices = self.impl.load_prices(ctx.category)
+        prices = self.load_prices(ctx.category)
         return Success(prices=prices)
 
     def make_forms(self, ctx):
 
-        forms = self.impl.instantiate_forms(**ctx("prices", "error_in"))
+        forms = self.instantiate_forms(**ctx("prices", "error_in"))
         return Success(forms=forms)
 
     def show_purchase_form(self, ctx):
 
         return Result(ctx("category", "prices", "forms"))
+
+    # Dependencies.
+
+    load_category = attrib()
+    load_prices = attrib()
+    instantiate_forms = attrib()

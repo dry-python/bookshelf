@@ -6,8 +6,6 @@ from stories import Result, Success, argument, story
 class ShowProfile:
     """Show profile together with user related aggregates."""
 
-    impl = attrib()
-
     @story
     @argument("user")
     def show(I):
@@ -15,11 +13,17 @@ class ShowProfile:
         I.find_profile
         I.show_profile
 
+    # Steps.
+
     def find_profile(self, ctx):
 
-        profile = self.impl.load_profile(ctx.user)
+        profile = self.load_profile(ctx.user)
         return Success(profile=profile)
 
     def show_profile(self, ctx):
 
         return Result(ctx("user", "profile"))
+
+    # Dependencies.
+
+    load_profile = attrib()

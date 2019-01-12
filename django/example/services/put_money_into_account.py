@@ -8,8 +8,6 @@ class PutMoneyIntoAccount:
 
     # TODO: Use external payment gateway in the future.
 
-    impl = attrib()
-
     @story
     @argument("user")
     @argument("amount")
@@ -19,18 +17,29 @@ class PutMoneyIntoAccount:
         I.increase_balance
         I.send_income_notification
 
+    # Steps.
+
     def find_profile(self, ctx):
 
-        profile = self.impl.load_profile(ctx.user)
+        profile = self.load_profile(ctx.user)
         return Success(profile=profile)
 
     def increase_balance(self, ctx):
 
-        self.impl.add_balance(ctx.profile, ctx.amount)
-        self.impl.save_profile(ctx.profile)
+        self.add_balance(ctx.profile, ctx.amount)
+        self.save_profile(ctx.profile)
         return Success()
 
     def send_income_notification(self, ctx):
 
-        notification = self.impl.send_notification("income", ctx.profile, ctx.amount)
+        notification = self.send_notification("income", ctx.profile, ctx.amount)
         return Success(notification=notification)
+
+    # Dependencies.
+
+    load_profile = attrib()
+    add_balance = attrib()
+    save_profile = attrib()
+    send_notification = attrib()
+    messages = attrib()
+    create_notification = attrib()
