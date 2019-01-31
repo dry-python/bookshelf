@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Failure, Result, Success, argument, story
+from stories import Failure, Result, Success, arguments, story
 
 
 @attrs
@@ -9,9 +9,7 @@ class BuySubscription:
     # TODO: Ignore repeated subscriptions.
 
     @story
-    @argument("category_id")
-    @argument("price_id")
-    @argument("user")
+    @arguments("category_id", "price_id", "user")
     def buy(I):
 
         I.find_category

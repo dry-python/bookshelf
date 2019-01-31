@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Result, Success, argument, story
+from stories import Result, Success, arguments, story
 
 
 @attrs
@@ -7,8 +7,7 @@ class ShopCategoryPrices:
     """Show purchase variants for category."""
 
     @story
-    @argument("category_id")
-    @argument("error_in")
+    @arguments("category_id", "error_in")
     def show(I):
 
         I.find_category

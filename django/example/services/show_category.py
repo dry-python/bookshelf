@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Failure, Result, Success, argument, story
+from stories import Failure, Result, Success, arguments, story
 
 
 @attrs
@@ -7,8 +7,7 @@ class ShowCategory:
     """Show category entries."""
 
     @story
-    @argument("category_id")
-    @argument("user")
+    @arguments("category_id", "user")
     def show(I):
 
         I.find_category

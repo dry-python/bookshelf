@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Failure, Success, argument, story
+from stories import Failure, Success, arguments, story
 
 
 @attrs
@@ -7,8 +7,7 @@ class SignUp:
     """Create user and associated profile for it."""
 
     @story
-    @argument("data")
-    @argument("request")
+    @arguments("data", "request")
     def register_user(I):
 
         I.compare_passwords

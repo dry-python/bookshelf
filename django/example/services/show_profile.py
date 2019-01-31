@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Result, Success, argument, story
+from stories import Result, Success, arguments, story
 
 
 @attrs
@@ -7,7 +7,7 @@ class ShowProfile:
     """Show profile together with user related aggregates."""
 
     @story
-    @argument("user")
+    @arguments("user")
     def show(I):
 
         I.find_profile

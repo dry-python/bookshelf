@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Success, argument, story
+from stories import Success, arguments, story
 
 
 @attrs
@@ -9,8 +9,7 @@ class PutMoneyIntoAccount:
     # TODO: Use external payment gateway in the future.
 
     @story
-    @argument("user")
-    @argument("amount")
+    @arguments("user", "amount")
     def put(I):
 
         I.find_profile

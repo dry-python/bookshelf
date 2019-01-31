@@ -1,5 +1,5 @@
 from attr import attrib, attrs
-from stories import Result, Success, argument, story
+from stories import Result, Success, arguments, story
 
 
 @attrs
@@ -7,7 +7,7 @@ class CategoriesForPurchase:
     """List categories available to user for purchase."""
 
     @story
-    @argument("user")
+    @arguments("user")
     def list(I):
 
         I.find_categories
