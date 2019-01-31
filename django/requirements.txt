@@ -1,10 +1,11 @@
--e git+https://github.com/dry-python/dependencies.git@f71fcbb003ea173db423d1d020037a9c010bca42#egg=dependencies
--e git+https://github.com/dry-python/stories.git@ccf2ac1b43d9669ac760bb0a8ebad0a83911b419#egg=stories
-attrs==18.2.0
-django-debug-toolbar==1.11
-django-extensions==2.1.4
-django==2.1.5
+Django==2.1.5
 djangorestframework==3.9.1
+django-debug-toolbar==1.11
+django-extensions==2.1.5
+attrs==18.2.0
+-e git+https://github.com/dry-python/dependencies.git@e2b09b1f4244aa2b7d74566324b725a3d8e6c975#egg=dependencies
+-e git+https://github.com/dry-python/stories.git@534aebde54ca0b206e1d1cf0933624ae027fe8ab#egg=stories
+## The following requirements were added by pip freeze:
 pytz==2018.9
 six==1.12.0
 sqlparse==0.2.4
