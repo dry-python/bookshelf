@@ -45,7 +45,7 @@ class ShowCategory:
 
     def show_entries(self, ctx):
 
-        return Result(ctx("category", "entries"))
+        return Result({"category": ctx.category, "entries": ctx.entries})
 
     # Dependencies.
 

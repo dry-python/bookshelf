@@ -29,12 +29,16 @@ class ShopCategoryPrices:
 
     def make_forms(self, ctx):
 
-        forms = self.instantiate_forms(**ctx("prices", "error_in"))
+        forms = self.instantiate_forms(prices=ctx.prices, error_in=ctx.error_in)
         return Success(forms=forms)
 
     def show_purchase_form(self, ctx):
 
-        return Result(ctx("category", "prices", "forms"))
+        return Result({
+            "category": ctx.category,
+            "prices": ctx.prices,
+            "forms": ctx.forms,
+        })
 
     # Dependencies.
 

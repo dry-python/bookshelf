@@ -43,7 +43,7 @@ class SignUp:
 
     def encrypt_password(self, ctx):
 
-        self.save_password(**ctx("user", "raw_password"))
+        self.save_password(user=ctx.user, raw_password=ctx.raw_password)
         return Success()
 
     def persist_profile(self, ctx):

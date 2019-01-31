@@ -22,7 +22,7 @@ class ShowProfile:
 
     def show_profile(self, ctx):
 
-        return Result(ctx("user", "profile"))
+        return Result({"user": ctx.user, "profile": ctx.profile})
 
     # Dependencies.
 

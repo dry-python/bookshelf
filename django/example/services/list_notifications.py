@@ -22,7 +22,7 @@ class ListNotifications:
 
     def show_notifications(self, ctx):
 
-        return Result(ctx("notifications"))
+        return Result({"notifications": ctx.notifications})
 
     # Dependencies.
 

@@ -40,7 +40,7 @@ class CategoriesForPurchase:
 
     def show_categories(self, ctx):
 
-        return Result(ctx("prices", categories="with_prices"))
+        return Result({"prices": ctx.prices, "categories": ctx.with_prices})
 
     # Dependencies.
 
