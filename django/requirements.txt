@@ -1,10 +1,10 @@
 Django==2.1.7
 djangorestframework==3.9.1
 django-debug-toolbar==1.11
-django-extensions==2.1.5
+django-extensions==2.1.6
 attrs==18.2.0
 -e git+https://github.com/dry-python/dependencies.git@e2b09b1f4244aa2b7d74566324b725a3d8e6c975#egg=dependencies
--e git+https://github.com/dry-python/stories.git@534aebde54ca0b206e1d1cf0933624ae027fe8ab#egg=stories
+stories==0.10
 ## The following requirements were added by pip freeze:
 pytz==2018.9
 six==1.12.0
