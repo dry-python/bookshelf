@@ -7,4 +7,4 @@ djangorestframework==3.9.1
 pytz==2018.9
 six==1.12.0
 sqlparse==0.2.4
-stories==0.10
+stories==0.10.1
