@@ -11,12 +11,3 @@ class Entry(models.Model):
     )
 
     content = models.FileField(upload_to="entries/%Y/%m/%d/")
-
-    class Meta:
-
-        verbose_name = _("entry")
-        verbose_name_plural = _("entries")
-
-    def __str__(self):
-
-        return self.content.name

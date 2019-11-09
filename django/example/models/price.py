@@ -15,12 +15,3 @@ class Price(models.Model):
     cost = models.DecimalField(max_digits=10, decimal_places=2)
 
     period = models.IntegerField()
-
-    class Meta:
-
-        verbose_name = _("price")
-        verbose_name_plural = _("prices")
-
-    def __str__(self):
-
-        return f"{self.cost} for {self.period} days"

@@ -11,12 +11,3 @@ class Notification(models.Model):
     )
 
     message = models.TextField()
-
-    class Meta:
-
-        verbose_name = _("notification")
-        verbose_name_plural = _("notifications")
-
-    def __str__(self):
-
-        return self.message
