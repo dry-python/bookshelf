@@ -1,10 +1,12 @@
--e git+https://github.com/dry-python/dependencies.git@e2b09b1f4244aa2b7d74566324b725a3d8e6c975#egg=dependencies
-attrs==19.3.0
+Django==2.2.7
+djangorestframework==3.10.3
 django-debug-toolbar==2.0
 django-extensions==2.2.5
-django==2.2.7
-djangorestframework==3.10.3
-pytz==2018.9
-six==1.12.0
-sqlparse==0.2.4
-stories==0.10.1
+attrs==19.3.0
+dependencies==0.16.dev0
+stories==0.11.dev0
+mappers==0.1.dev0
+## The following requirements were added by pip freeze:
+pytz==2019.3
+six==1.13.0
+sqlparse==0.3.0

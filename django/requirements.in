@@ -3,5 +3,6 @@ djangorestframework
 django-debug-toolbar
 django-extensions
 attrs
--e git+https://github.com/dry-python/dependencies.git@e2b09b1f4244aa2b7d74566324b725a3d8e6c975#egg=dependencies
-stories
+git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
+git+https://github.com/dry-python/stories.git@master#egg=stories
+git+https://github.com/dry-python/mappers.git@master#egg=mappers
