@@ -18,4 +18,4 @@ class CategoryShopView(Injector):
     @operation
     def get(categories_for_purchase, user, render):
 
-        return render(categories_for_purchase(user))
+        return render(categories_for_purchase(user=user))

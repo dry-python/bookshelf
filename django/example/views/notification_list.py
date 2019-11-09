@@ -18,4 +18,4 @@ class NotificationListView(Injector):
     @operation
     def get(list_notifications, user, render):
 
-        return render(list_notifications(user))
+        return render(list_notifications(user=user))

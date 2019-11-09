@@ -25,7 +25,7 @@ class BuySubscriptionView(Injector):
     @operation
     def get(show_prices, category_id, render):
 
-        return render(show_prices(category_id, None))
+        return render(show_prices(category_id=category_id, error_in=None))
 
     @operation
     def post(
@@ -35,8 +35,8 @@ class BuySubscriptionView(Injector):
         form = form_class(request.POST, request.FILES)
         form.is_valid()
         price_id = form.cleaned_data["price_id"]
-        result = buy_subscription.run(category_id, price_id, user)
+        result = buy_subscription.run(category_id=category_id, price_id=price_id, user=user)
         if result.is_success:
             return redirect(result.value)
         elif result.failed_on("check_balance"):
-            return render(show_prices(category_id, price_id))
+            return render(show_prices(category_id=category_id, error_in=price_id))

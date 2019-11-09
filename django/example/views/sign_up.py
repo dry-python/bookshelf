@@ -23,7 +23,7 @@ class SignUpView(Injector):
     @operation
     def form_valid(sign_up, data, form, view, request):
 
-        result = sign_up.run(data, request)
+        result = sign_up.run(data=data, request=request)
         if result.is_success:
             return redirect("/")
         elif result.failed_on("compare_passwords"):

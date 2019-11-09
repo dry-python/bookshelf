@@ -18,4 +18,4 @@ class ProfileView(Injector):
     @operation
     def get(show_profile, render, user):
 
-        return render(show_profile(user))
+        return render(show_profile(user=user))

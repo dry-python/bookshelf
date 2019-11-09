@@ -22,5 +22,5 @@ class PutMoneyView(Injector):
     @operation
     def form_valid(put_money_into_account, user, amount):
 
-        put_money_into_account(user, amount)
+        put_money_into_account(user=user, amount=amount)
         return redirect("profile")

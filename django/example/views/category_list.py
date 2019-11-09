@@ -18,4 +18,4 @@ class CategoryListView(Injector):
     @operation
     def get(list_categories, render, user):
 
-        return render(list_categories(user))
+        return render(list_categories(user=user))

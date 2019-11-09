@@ -21,7 +21,7 @@ class CategoryDetailView(Injector):
     @operation
     def get(show_category, category_id, user, render):
 
-        result = show_category.run(category_id, user)
+        result = show_category.run(category_id=category_id, user=user)
         if result.is_success:
             return render(result.value)
         elif result.failed_on("find_subscription"):
