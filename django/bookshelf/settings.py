@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "stories.contrib.debug_toolbars.django",
     # Project.
-    "example.apps.ExampleConfig",
+    "bookshelf.apps.BookshelfConfig",
 ]
 
 MIDDLEWARE = [
@@ -37,7 +37,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "example.urls"
+ROOT_URLCONF = "bookshelf.urls"
 
 LOGIN_URL = "/login/"
 
@@ -52,7 +52,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "example.wsgi.application"
+WSGI_APPLICATION = "bookshelf.wsgi.application"
 
 DATABASES = {
     "default": {

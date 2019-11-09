@@ -2,11 +2,11 @@ from dependencies import Injector, Package, operation, this
 from dependencies.contrib.django import form_view
 from django.shortcuts import redirect
 
-from example.forms import PutMoneyForm
+from bookshelf.forms import PutMoneyForm
 
 
-implemented = Package("example.implemented")
-functions = Package("example.functions")
+implemented = Package("bookshelf.implemented")
+functions = Package("bookshelf.functions")
 
 
 @form_view

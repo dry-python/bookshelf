@@ -2,11 +2,11 @@ from dependencies import Injector, Package, operation, this
 from dependencies.contrib.django import view
 from django.shortcuts import redirect
 
-from example.forms import SubscribeForm
+from bookshelf.forms import SubscribeForm
 
 
-implemented = Package("example.implemented")
-functions = Package("example.functions")
+implemented = Package("bookshelf.implemented")
+functions = Package("bookshelf.functions")
 
 
 @view

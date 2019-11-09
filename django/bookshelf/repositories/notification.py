@@ -1,4 +1,4 @@
-from example.models import Notification
+from bookshelf.models import Notification
 
 
 def load_notifications(user):

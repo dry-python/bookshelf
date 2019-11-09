@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import include, path
 from django.views.generic import RedirectView
 
-from example import views
+from bookshelf import views
 
 
 urlpatterns = [

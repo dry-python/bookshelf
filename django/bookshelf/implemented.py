@@ -3,9 +3,9 @@ from dependencies import Injector, Package
 
 django = Package("django")
 
-services = Package("example.services")
-repositories = Package("example.repositories")
-functions = Package("example.functions")
+services = Package("bookshelf.services")
+repositories = Package("bookshelf.repositories")
+functions = Package("bookshelf.functions")
 
 
 class ShowPrices(Injector):

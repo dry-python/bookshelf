@@ -3,8 +3,8 @@ from datetime import timedelta
 from django.utils.timezone import now
 from django.utils.translation import gettext as _
 
-from example.forms import SubscribeForm
-from example.functions.utils import apply
+from bookshelf.forms import SubscribeForm
+from bookshelf.functions.utils import apply
 
 
 @apply(list)

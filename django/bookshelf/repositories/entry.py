@@ -1,4 +1,4 @@
-from example.models import Entry
+from bookshelf.models import Entry
 
 
 def load_entries(category):

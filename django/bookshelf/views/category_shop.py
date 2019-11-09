@@ -2,8 +2,8 @@ from dependencies import Injector, Package, operation
 from dependencies.contrib.django import view
 
 
-implemented = Package("example.implemented")
-functions = Package("example.functions")
+implemented = Package("bookshelf.implemented")
+functions = Package("bookshelf.functions")
 
 
 @view

@@ -1,6 +1,6 @@
 from django.db.models import F
 
-from example.models import Profile
+from bookshelf.models import Profile
 
 
 def load_profile(user):

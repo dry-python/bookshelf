@@ -1,7 +1,7 @@
 from django.db.models import Exists, OuterRef
 from django.utils.timezone import now
 
-from example.models import Category, Price
+from bookshelf.models import Category, Price
 
 
 def load_category(category_id):

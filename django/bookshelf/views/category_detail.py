@@ -3,8 +3,8 @@ from dependencies.contrib.django import view
 from django.utils.translation import gettext as _
 
 
-implemented = Package("example.implemented")
-functions = Package("example.functions")
+implemented = Package("bookshelf.implemented")
+functions = Package("bookshelf.functions")
 
 
 @view

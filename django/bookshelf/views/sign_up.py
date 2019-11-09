@@ -3,11 +3,11 @@ from dependencies.contrib.django import form_view
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
-from example.forms import SignUpForm
+from bookshelf.forms import SignUpForm
 
 
-implemented = Package("example.implemented")
-functions = Package("example.functions")
+implemented = Package("bookshelf.implemented")
+functions = Package("bookshelf.functions")
 
 
 @form_view

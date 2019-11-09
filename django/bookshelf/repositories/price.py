@@ -1,6 +1,6 @@
 from django.db.models import Min
 
-from example.models import Price
+from bookshelf.models import Price
 
 
 def load_price(price_id):
@@ -19,10 +19,10 @@ def cheapest_price_by_category(categories):
     #
     # SELECT "category_id",
     #        MIN("cost")
-    #   FROM "example_price"
+    #   FROM "bookshelf_price"
     #  WHERE "id" IN (
     #    SELECT "id"
-    #      FROM "example_price"
+    #      FROM "bookshelf_price"
     #     WHERE "category_id" IN (1, 2, 3, 4)
     #     GROUP BY "category_id", "period"
     #    HAVING "from_date" = MAX("from_date")

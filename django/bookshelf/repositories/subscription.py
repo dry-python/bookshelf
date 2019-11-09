@@ -1,4 +1,4 @@
-from example.models import Subscription
+from bookshelf.models import Subscription
 
 
 def load_subscription(user, category):
