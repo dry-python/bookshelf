@@ -1,8 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UsernameField
-from django.contrib.auth.password_validation import (
-    password_validators_help_text_html,
-)
+from django.contrib.auth.password_validation import password_validators_help_text_html
 from django.utils.translation import gettext_lazy as _
 
 

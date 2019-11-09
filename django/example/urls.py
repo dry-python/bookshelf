@@ -1,7 +1,6 @@
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import include, path
@@ -13,7 +12,6 @@ from example import views
 urlpatterns = [
     path("", RedirectView.as_view(url="/categories/"), name="home"),
     path("__debug__/", include(debug_toolbar.urls)),
-    path("admin/", admin.site.urls),
     # TODO: Do not show login for authenticated user.
     path("login/", LoginView.as_view(), name="login"),
     path(
