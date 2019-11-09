@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.timezone import now
-from django.utils.translation import gettext_lazy as _
 
 from .category import Category
 from .profile import Profile
