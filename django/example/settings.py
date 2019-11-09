@@ -95,5 +95,5 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
-    "stories.contrib.debug_toolbars.django.panels.StoriesPanel"
+    "stories.contrib.debug_toolbars.django.StoriesPanel"
 ]
