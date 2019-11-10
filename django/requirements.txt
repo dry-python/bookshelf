@@ -3,9 +3,9 @@ djangorestframework==3.10.3
 django-debug-toolbar==2.0
 django-extensions==2.2.5
 attrs==19.3.0
-dependencies==0.16.dev0
-stories==0.11.dev0
-mappers==0.1.dev0
+git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
+git+https://github.com/dry-python/stories.git@master#egg=stories
+git+https://github.com/dry-python/mappers.git@master#egg=mappers
 ## The following requirements were added by pip freeze:
 pytz==2019.3
 six==1.13.0
