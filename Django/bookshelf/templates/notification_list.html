@@ -1,0 +1,27 @@
+{% extends 'layout.html' %} {% load i18n %} {% block body %}
+<nav>
+  <ol>
+    <li>
+      <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+    </li>
+  </ol>
+</nav>
+<div>
+  <ul>
+    {% for notification in notifications %}
+    <li>
+      {{ notification.message }}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

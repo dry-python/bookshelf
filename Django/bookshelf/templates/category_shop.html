@@ -1,0 +1,38 @@
+{% extends 'layout.html' %} {% load i18n %} {% load index from bookshelf %} {%
+block body %}
+<nav>
+  <ol>
+    <li>
+      <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+    </li>
+  </ol>
+</nav>
+<div>
+  {% if categories %}
+  <ul>
+    {% for category in categories %}
+    <li>
+      {{ category.name }}
+      <small>
+        {% blocktrans with price=prices|index:category.pk %} Starting from {{
+        price }}$. {% endblocktrans %}
+      </small>
+      <a href="{% url 'buy-subscription' category.pk %}">
+        {% trans 'Buy' %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %} {% blocktrans %} There ara no categories available for
+  subscriptions. {% endblocktrans %} {% endif %}
+</div>
+{% endblock %}

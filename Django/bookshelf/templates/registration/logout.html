@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% load i18n %} {% block body %}
+<nav>
+  <ol>
+    <li>
+      <a href="{% url 'sign-up' %}">{% trans 'Sign Up' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'login' %}">{% trans 'Login' %}</a>
+    </li>
+  </ol>
+</nav>
+<div>
+  <p>
+    {% blocktrans %} You are logged out. {% endblocktrans %}
+  </p>
+</div>
+{% endblock %}

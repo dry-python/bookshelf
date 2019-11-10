@@ -1,0 +1,32 @@
+{% extends 'layout.html' %} {% load i18n %} {% block body %}
+<nav>
+  <ol>
+    <li>
+      <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+    </li>
+  </ol>
+</nav>
+<div>
+  {% if categories %}
+  <ul>
+    {% for category in categories %}
+    <li>
+      <a href="{{ category.get_absolute_url }}">
+        {{ category.name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %} {% blocktrans %} You are not subscribed to any category. {%
+  endblocktrans %} {% endif %}
+</div>
+{% endblock %}

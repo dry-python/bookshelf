@@ -1,0 +1,25 @@
+{% extends 'layout.html' %} {% load i18n %} {% block body %}
+<nav>
+  <ol>
+    <li>
+      <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
+    </li>
+    <li>
+      <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+    </li>
+  </ol>
+</nav>
+<form method="POST" action="">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="{% trans 'Invest' %}" />
+</form>
+{% endblock %}
