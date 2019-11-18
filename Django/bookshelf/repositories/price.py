@@ -1,19 +1,28 @@
+from typing import Dict
+from typing import List
+
 from django.db.models import Min
+from mappers import Mapper
 
-from bookshelf.models import Price
+from bookshelf import models
+from bookshelf.entities import Category
+from bookshelf.entities import CategoryId
+from bookshelf.entities import Price
+from bookshelf.entities import PriceId
+
+mapper = Mapper(Price, models.Price, {"primary_key": "id"})
 
 
-def load_price(price_id):
+@mapper.reader
+def load_price(price_id: PriceId) -> Price:
+    return models.Price.objects.filter(pk=price_id)
 
-    return Price.objects.get(pk=price_id)
 
-
-def prices_for_category(category):
-
+def prices_for_category(category: Category) -> Dict[PriceId, Price]:
     return {price.pk: price for price in Price.objects.filter(category=category)}
 
 
-def cheapest_price_by_category(categories):
+def cheapest_price_by_category(categories: List[Category]) -> Dict[CategoryId, int]:
 
     # FIXME: Express this query.
     #

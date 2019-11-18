@@ -10,7 +10,6 @@ from .profile import add_balance
 from .profile import create_profile
 from .profile import decrease_balance
 from .profile import load_profile
-from .profile import save_profile
 from .subscription import create_subscription
 from .subscription import load_subscription
 from .user import create_user
