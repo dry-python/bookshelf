@@ -7,10 +7,10 @@ per-file-ignores =
   # These modules are interfaces.  They contains public classes and
   # functions avalable from the outside.  No code is allowed to be
   # imported from the nested modules.
-  Django/bookshelf/entities/__init__.py: F401
-  Django/bookshelf/services/__init__.py: F401
-  Django/bookshelf/functions/__init__.py: F401
-  Django/bookshelf/repositories/__init__.py: F401
-  Django/bookshelf/models/__init__.py: F401
-  Django/bookshelf/views/__init__.py: F401
-  Django/bookshelf/forms/__init__.py: F401
+  bookshelf/bookshelf/entities/__init__.py: F401
+  bookshelf/bookshelf/services/__init__.py: F401
+  bookshelf/bookshelf/functions/__init__.py: F401
+  bookshelf/bookshelf/repositories/__init__.py: F401
+  bookshelf/bookshelf/models/__init__.py: F401
+  bookshelf/bookshelf/views/__init__.py: F401
+  bookshelf/bookshelf/forms/__init__.py: F401
