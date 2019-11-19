@@ -1,12 +1,11 @@
-Django==2.2.7
-djangorestframework==3.10.3
-django-debug-toolbar==2.0
-django-extensions==2.2.5
 attrs==19.3.0
 git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
-git+https://github.com/dry-python/stories.git@master#egg=stories
+django-debug-toolbar==2.1
+django-extensions==2.2.5
+django==2.2.7
+djangorestframework==3.10.3
 git+https://github.com/dry-python/mappers.git@master#egg=mappers
-## The following requirements were added by pip freeze:
 pytz==2019.3
 six==1.13.0
 sqlparse==0.3.0
+git+https://github.com/dry-python/stories.git@master#egg=stories
