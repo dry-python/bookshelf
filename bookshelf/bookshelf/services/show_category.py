@@ -47,7 +47,7 @@ class ShowCategory:
 
     def check_expiration(self, ctx):
 
-        if ctx.subscription.is_expired():
+        if ctx.subscription.is_expired:
             return Failure()
         else:
             return Success()

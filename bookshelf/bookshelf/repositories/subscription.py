@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
+from mappers import Evaluated
 from mappers import Mapper
 
 from bookshelf import models
@@ -8,7 +9,9 @@ from bookshelf.entities import Category
 from bookshelf.entities import Profile
 from bookshelf.entities import Subscription
 
-mapper = Mapper(Subscription, models.Subscription, {"primary_key": "id"})
+mapper = Mapper(
+    Subscription, models.Subscription, {"primary_key": "id", "is_expired": Evaluated()}
+)
 
 
 @mapper.reader

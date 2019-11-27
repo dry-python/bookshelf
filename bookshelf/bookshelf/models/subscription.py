@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.timezone import now
 
 from .category import Category
 from .profile import Profile
@@ -16,7 +15,3 @@ class Subscription(models.Model):
     )
 
     expires = models.DateTimeField()
-
-    def is_expired(self):
-
-        return self.expires < now()

@@ -17,3 +17,4 @@ class Subscription(Validated):
     profile: Profile
     category: Category
     expires: datetime
+    is_expired: bool
