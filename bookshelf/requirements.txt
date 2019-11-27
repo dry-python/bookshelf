@@ -5,6 +5,7 @@ django-extensions==2.2.5
 django==2.2.7
 djangorestframework==3.10.3
 git+https://github.com/dry-python/mappers.git@master#egg=mappers
+pydantic==0.32.2
 pytz==2019.3
 six==1.13.0
 sqlparse==0.3.0
