@@ -6,12 +6,13 @@ from attr import attrib
 from attr import attrs
 
 from .category import Category
+from .validated import Validated
 
 PriceId = NewType("PriceId", int)
 
 
 @attrs
-class Price:
+class Price(Validated):
 
     primary_key = attrib(type=PriceId)
     category = attrib(type=Category)

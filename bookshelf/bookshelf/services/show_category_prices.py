@@ -3,7 +3,6 @@ from typing import Optional
 
 from attr import attrib
 from attr import attrs
-from django.forms import Form  # FIXME: Layer violation.
 from pydantic import BaseModel
 from stories import arguments
 from stories import Result
@@ -71,4 +70,4 @@ class Context(BaseModel):
 
     category: Category
     prices: List[Price]
-    forms: List[Form]
+    forms: List

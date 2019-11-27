@@ -6,12 +6,13 @@ from attr import attrs
 
 from .category import Category
 from .profile import Profile
+from .validated import Validated
 
 SubscriptionId = NewType("SubscriptionId", int)
 
 
 @attrs
-class Subscription:
+class Subscription(Validated):
 
     primary_key = attrib(type=SubscriptionId)
     profile = attrib(type=Profile)
