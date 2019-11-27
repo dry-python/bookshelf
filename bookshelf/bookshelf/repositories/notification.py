@@ -15,5 +15,5 @@ def load_notifications(profile_id: ProfileId) -> List[Notification]:
     return models.Notification.objects.filter(profile=profile_id).order_by("-pk")
 
 
-def create_notification(profile: Profile, message: str) -> None:
+def create_notification(profile: Profile, message: str) -> Notification:
     return models.Notification.objects.create(profile=profile, message=message)

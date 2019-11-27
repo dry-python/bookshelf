@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import NewType
 
-from attr import attrib
 from attr import attrs
 
 from .category import Category
@@ -11,10 +10,10 @@ from .validated import Validated
 SubscriptionId = NewType("SubscriptionId", int)
 
 
-@attrs
+@attrs(auto_attribs=True)
 class Subscription(Validated):
 
-    primary_key = attrib(type=SubscriptionId)
-    profile = attrib(type=Profile)
-    category = attrib(type=Category)
-    expires = attrib(type=datetime)
+    primary_key: SubscriptionId
+    profile: Profile
+    category: Category
+    expires: datetime

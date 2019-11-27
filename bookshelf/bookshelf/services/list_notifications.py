@@ -1,6 +1,6 @@
+from typing import Callable
 from typing import List
 
-from attr import attrib
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -12,7 +12,7 @@ from bookshelf.entities import Notification
 from bookshelf.entities import ProfileId
 
 
-@attrs
+@attrs(auto_attribs=True)
 class ListNotifications:
     """List user notifications."""
 
@@ -36,7 +36,7 @@ class ListNotifications:
 
     # Dependencies.
 
-    load_notifications = attrib()
+    load_notifications: Callable
 
 
 @ListNotifications.list.contract

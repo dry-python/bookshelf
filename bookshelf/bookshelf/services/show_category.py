@@ -1,6 +1,6 @@
+from typing import Callable
 from typing import List
 
-from attr import attrib
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -16,7 +16,7 @@ from bookshelf.entities import ProfileId
 from bookshelf.entities import Subscription
 
 
-@attrs
+@attrs(auto_attribs=True)
 class ShowCategory:
     """Show category entries."""
 
@@ -63,9 +63,9 @@ class ShowCategory:
 
     # Dependencies.
 
-    load_category = attrib()
-    load_subscription = attrib()
-    load_entries = attrib()
+    load_category: Callable
+    load_subscription: Callable
+    load_entries: Callable
 
 
 @ShowCategory.show.contract

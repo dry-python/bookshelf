@@ -1,6 +1,6 @@
+from typing import Callable
 from typing import List
 
-from attr import attrib
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -13,7 +13,7 @@ from bookshelf.entities import Price
 from bookshelf.entities import ProfileId
 
 
-@attrs
+@attrs(auto_attribs=True)
 class CategoriesForPurchase:
     """List categories available to user for purchase."""
 
@@ -55,10 +55,10 @@ class CategoriesForPurchase:
 
     # Dependencies.
 
-    load_categories = attrib()
-    exclude_subscriptions = attrib()
-    filter_prices = attrib()
-    load_prices = attrib()
+    load_categories: Callable
+    exclude_subscriptions: Callable
+    filter_prices: Callable
+    load_prices: Callable
 
 
 @CategoriesForPurchase.list.contract

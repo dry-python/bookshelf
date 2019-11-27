@@ -1,4 +1,5 @@
-from attr import attrib
+from typing import Callable
+
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -17,7 +18,7 @@ from bookshelf.entities import ProfileId
 from bookshelf.entities import Subscription
 
 
-@attrs
+@attrs(auto_attribs=True)
 class BuySubscription:
     """Buy subscription for certain category."""
 
@@ -85,16 +86,15 @@ class BuySubscription:
 
     # Dependencies.
 
-    load_category = attrib()
-    load_price = attrib()
-    load_profile = attrib()
-    decrease_balance = attrib()
-    save_profile = attrib()
-    calculate_period = attrib()
-    create_subscription = attrib()
-    send_notification = attrib()
-    messages = attrib()
-    create_notification = attrib()
+    load_category: Callable
+    load_price: Callable
+    load_profile: Callable
+    decrease_balance: Callable
+    save_profile: Callable
+    calculate_period: Callable
+    create_subscription: Callable
+    send_notification: Callable
+    create_notification: Callable
 
 
 @BuySubscription.buy.contract

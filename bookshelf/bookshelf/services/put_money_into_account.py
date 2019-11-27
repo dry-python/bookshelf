@@ -1,6 +1,6 @@
 from decimal import Decimal
+from typing import Callable
 
-from attr import attrib
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -12,7 +12,7 @@ from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 
 
-@attrs
+@attrs(auto_attribs=True)
 class PutMoneyIntoAccount:
     """Put money into user account."""
 
@@ -46,12 +46,11 @@ class PutMoneyIntoAccount:
 
     # Dependencies.
 
-    load_profile = attrib()
-    add_balance = attrib()
-    save_profile = attrib()
-    send_notification = attrib()
-    messages = attrib()
-    create_notification = attrib()
+    load_profile: Callable
+    add_balance: Callable
+    save_profile: Callable
+    send_notification: Callable
+    create_notification: Callable
 
 
 @PutMoneyIntoAccount.put.contract

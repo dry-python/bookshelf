@@ -1,4 +1,5 @@
-from attr import attrib
+from typing import Callable
+
 from attr import attrs
 from stories import arguments
 from stories import Failure
@@ -6,7 +7,7 @@ from stories import story
 from stories import Success
 
 
-@attrs
+@attrs(auto_attribs=True)
 class SignUp:
     """Create user and associated profile for it."""
 
@@ -67,11 +68,10 @@ class SignUp:
 
     # Dependencies.
 
-    validate_password = attrib()
-    create_user = attrib()
-    save_password = attrib()
-    create_profile = attrib()
-    store_user_in_session = attrib()
-    send_notification = attrib()
-    messages = attrib()
-    create_notification = attrib()
+    validate_password: Callable
+    create_user: Callable
+    save_password: Callable
+    create_profile: Callable
+    store_user_in_session: Callable
+    send_notification: Callable
+    create_notification: Callable

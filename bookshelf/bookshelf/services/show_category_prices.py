@@ -1,7 +1,7 @@
+from typing import Callable
 from typing import List
 from typing import Optional
 
-from attr import attrib
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -15,7 +15,7 @@ from bookshelf.entities import Price
 from bookshelf.entities import PriceId
 
 
-@attrs
+@attrs(auto_attribs=True)
 class ShopCategoryPrices:
     """Show purchase variants for category."""
 
@@ -53,9 +53,9 @@ class ShopCategoryPrices:
 
     # Dependencies.
 
-    load_category = attrib()
-    load_prices = attrib()
-    instantiate_forms = attrib()
+    load_category: Callable
+    load_prices: Callable
+    instantiate_forms: Callable
 
 
 @ShopCategoryPrices.show.contract

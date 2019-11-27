@@ -1,4 +1,5 @@
-from attr import attrib
+from typing import Callable
+
 from attr import attrs
 from pydantic import BaseModel
 from stories import arguments
@@ -10,7 +11,7 @@ from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 
 
-@attrs
+@attrs(auto_attribs=True)
 class ShowProfile:
     """Show profile together with user related aggregates."""
 
@@ -34,7 +35,7 @@ class ShowProfile:
 
     # Dependencies.
 
-    load_profile = attrib()
+    load_profile: Callable
 
 
 @ShowProfile.show.contract
