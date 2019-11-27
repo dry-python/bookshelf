@@ -1,10 +1,19 @@
+from typing import List
+
 from attr import attrib
 from attr import attrs
+from pydantic import BaseModel
 from stories import arguments
 from stories import Failure
 from stories import Result
 from stories import story
 from stories import Success
+
+from bookshelf.entities import Category
+from bookshelf.entities import CategoryId
+from bookshelf.entities import Entry
+from bookshelf.entities import ProfileId
+from bookshelf.entities import Subscription
 
 
 @attrs
@@ -12,7 +21,7 @@ class ShowCategory:
     """Show category entries."""
 
     @story
-    @arguments("category_id", "user")
+    @arguments("category_id", "profile_id")
     def show(I):
 
         I.find_category
@@ -30,7 +39,7 @@ class ShowCategory:
 
     def find_subscription(self, ctx):
 
-        subscription = self.load_subscription(ctx.user, ctx.category)
+        subscription = self.load_subscription(ctx.profile_id, ctx.category)
         if subscription:
             return Success(subscription=subscription)
         else:
@@ -57,3 +66,18 @@ class ShowCategory:
     load_category = attrib()
     load_subscription = attrib()
     load_entries = attrib()
+
+
+@ShowCategory.show.contract
+class Context(BaseModel):
+
+    # Arguments.
+
+    category_id: CategoryId
+    profile_id: ProfileId
+
+    # State.
+
+    category: Category
+    subscription: Subscription
+    entities: List[Entry]

@@ -1,9 +1,15 @@
+from typing import List
+
 from attr import attrib
 from attr import attrs
+from pydantic import BaseModel
 from stories import arguments
 from stories import Result
 from stories import story
 from stories import Success
+
+from bookshelf.entities import Notification
+from bookshelf.entities import ProfileId
 
 
 @attrs
@@ -11,7 +17,7 @@ class ListNotifications:
     """List user notifications."""
 
     @story
-    @arguments("user")
+    @arguments("profile_id")
     def list(I):
 
         I.find_notifications
@@ -21,7 +27,7 @@ class ListNotifications:
 
     def find_notifications(self, ctx):
 
-        notifications = self.load_notifications(ctx.user)
+        notifications = self.load_notifications(ctx.profile_id)
         return Success(notifications=notifications)
 
     def show_notifications(self, ctx):
@@ -31,3 +37,15 @@ class ListNotifications:
     # Dependencies.
 
     load_notifications = attrib()
+
+
+@ListNotifications.list.contract
+class Context(BaseModel):
+
+    # Arguments.
+
+    profile_id: ProfileId
+
+    # State.
+
+    notifications: List[Notification]

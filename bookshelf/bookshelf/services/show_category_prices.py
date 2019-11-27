@@ -1,9 +1,19 @@
+from typing import List
+from typing import Optional
+
 from attr import attrib
 from attr import attrs
+from django.forms import Form  # FIXME: Layer violation.
+from pydantic import BaseModel
 from stories import arguments
 from stories import Result
 from stories import story
 from stories import Success
+
+from bookshelf.entities import Category
+from bookshelf.entities import CategoryId
+from bookshelf.entities import Price
+from bookshelf.entities import PriceId
 
 
 @attrs
@@ -47,3 +57,18 @@ class ShopCategoryPrices:
     load_category = attrib()
     load_prices = attrib()
     instantiate_forms = attrib()
+
+
+@ShopCategoryPrices.show.contract
+class Context(BaseModel):
+
+    # Arguments.
+
+    category_id: CategoryId
+    error_in: Optional[PriceId]
+
+    # State.
+
+    category: Category
+    prices: List[Price]
+    forms: List[Form]

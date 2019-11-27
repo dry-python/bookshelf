@@ -1,10 +1,20 @@
 from attr import attrib
 from attr import attrs
+from pydantic import BaseModel
 from stories import arguments
 from stories import Failure
 from stories import Result
 from stories import story
 from stories import Success
+
+from bookshelf.entities import Category
+from bookshelf.entities import CategoryId
+from bookshelf.entities import Notification
+from bookshelf.entities import Price
+from bookshelf.entities import PriceId
+from bookshelf.entities import Profile
+from bookshelf.entities import ProfileId
+from bookshelf.entities import Subscription
 
 
 @attrs
@@ -14,7 +24,7 @@ class BuySubscription:
     # TODO: Ignore repeated subscriptions.
 
     @story
-    @arguments("category_id", "price_id", "user")
+    @arguments("category_id", "price_id", "profile_id")
     def buy(I):
 
         I.find_category
@@ -40,7 +50,7 @@ class BuySubscription:
 
     def find_profile(self, ctx):
 
-        profile = self.load_profile(ctx.user)
+        profile = self.load_profile(ctx.profile_id)
         return Success(profile=profile)
 
     def check_balance(self, ctx):
@@ -85,3 +95,21 @@ class BuySubscription:
     send_notification = attrib()
     messages = attrib()
     create_notification = attrib()
+
+
+@BuySubscription.buy.contract
+class Context(BaseModel):
+
+    # Arguments.
+
+    category_id: CategoryId
+    price_id: PriceId
+    profile_id: ProfileId
+
+    # State.
+
+    category: Category
+    price: Price
+    profile: Profile
+    subscription: Subscription
+    notification: Notification

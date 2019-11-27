@@ -1,9 +1,16 @@
+from typing import List
+
 from attr import attrib
 from attr import attrs
+from pydantic import BaseModel
 from stories import arguments
 from stories import Result
 from stories import story
 from stories import Success
+
+from bookshelf.entities import Category
+from bookshelf.entities import Price
+from bookshelf.entities import ProfileId
 
 
 @attrs
@@ -11,7 +18,7 @@ class CategoriesForPurchase:
     """List categories available to user for purchase."""
 
     @story
-    @arguments("user")
+    @arguments("profile_id")
     def list(I):
 
         I.find_categories
@@ -29,7 +36,7 @@ class CategoriesForPurchase:
 
     def keep_without_subscriptions(self, ctx):
 
-        categories = self.exclude_subscriptions(ctx.categories, ctx.user)
+        categories = self.exclude_subscriptions(ctx.categories, ctx.profile_id)
         return Success(no_subscriptions=categories)
 
     def keep_with_prices(self, ctx):
@@ -52,3 +59,18 @@ class CategoriesForPurchase:
     exclude_subscriptions = attrib()
     filter_prices = attrib()
     load_prices = attrib()
+
+
+@CategoriesForPurchase.list.contract
+class Context(BaseModel):
+
+    # Arguments.
+
+    profile_id: ProfileId
+
+    # State.
+
+    categories: List[Category]
+    no_subscriptions: List[Category]
+    with_prices: List[Category]
+    prices: List[Price]

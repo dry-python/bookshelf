@@ -1,8 +1,15 @@
+from decimal import Decimal
+
 from attr import attrib
 from attr import attrs
+from pydantic import BaseModel
 from stories import arguments
 from stories import story
 from stories import Success
+
+from bookshelf.entities import Notification
+from bookshelf.entities import Profile
+from bookshelf.entities import ProfileId
 
 
 @attrs
@@ -12,7 +19,7 @@ class PutMoneyIntoAccount:
     # TODO: Use external payment gateway in the future.
 
     @story
-    @arguments("user", "amount")
+    @arguments("profile_id", "amount")
     def put(I):
 
         I.find_profile
@@ -23,7 +30,7 @@ class PutMoneyIntoAccount:
 
     def find_profile(self, ctx):
 
-        profile = self.load_profile(ctx.user)
+        profile = self.load_profile(ctx.profile_id)
         return Success(profile=profile)
 
     def increase_balance(self, ctx):
@@ -45,3 +52,17 @@ class PutMoneyIntoAccount:
     send_notification = attrib()
     messages = attrib()
     create_notification = attrib()
+
+
+@PutMoneyIntoAccount.put.contract
+class Context(BaseModel):
+
+    # Arguments.
+
+    profile_id: ProfileId
+    amount: Decimal
+
+    # State.
+
+    profile: Profile
+    notification: Notification
