@@ -34,6 +34,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "bookshelf.middlewares.ProfileIdMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
