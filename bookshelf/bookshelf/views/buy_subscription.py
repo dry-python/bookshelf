@@ -31,15 +31,13 @@ class BuySubscriptionView(Injector):
         return render(show_prices(category_id=category_id, error_in=None))
 
     @operation
-    def post(
-        buy_subscription, show_prices, render, category_id, user, form_class, request
-    ):
+    def post(buy_subscription, show_prices, render, category_id, form_class, request):
 
         form = form_class(request.POST, request.FILES)
         form.is_valid()
         price_id = form.cleaned_data["price_id"]
         result = buy_subscription.run(
-            category_id=category_id, price_id=price_id, user=user
+            category_id=category_id, price_id=price_id, profile_id=request.profile_id
         )
         if result.is_success:
             return redirect(result.value)

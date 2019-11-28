@@ -23,7 +23,7 @@ class PutMoneyView(Injector):
     amount = this.form.cleaned_data["amount"]
 
     @operation
-    def form_valid(put_money_into_account, user, amount):
+    def form_valid(put_money_into_account, amount, request):
 
-        put_money_into_account(user=user, amount=amount)
+        put_money_into_account(profile_id=request.profile_id, amount=amount)
         return redirect("profile")

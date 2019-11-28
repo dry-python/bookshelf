@@ -18,6 +18,6 @@ class ProfileView(Injector):
     render = functions.Render.do
 
     @operation
-    def get(show_profile, render, user):
+    def get(show_profile, render, request):
 
-        return render(show_profile(user=user))
+        return render(show_profile(profile_id=request.profile_id))

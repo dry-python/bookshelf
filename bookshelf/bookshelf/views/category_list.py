@@ -18,6 +18,6 @@ class CategoryListView(Injector):
     render = functions.Render.do
 
     @operation
-    def get(list_categories, render, user):
+    def get(list_categories, render, request):
 
-        return render(list_categories(user=user))
+        return render(list_categories(profile_id=request.profile_id))

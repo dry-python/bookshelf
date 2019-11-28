@@ -22,9 +22,11 @@ class CategoryDetailView(Injector):
     render = functions.Render.do
 
     @operation
-    def get(show_category, category_id, user, render):
+    def get(show_category, category_id, render, request):
 
-        result = show_category.run(category_id=category_id, user=user)
+        result = show_category.run(
+            category_id=category_id, profile_id=request.profile_id
+        )
         if result.is_success:
             return render(result.value)
         elif result.failed_on("find_subscription"):

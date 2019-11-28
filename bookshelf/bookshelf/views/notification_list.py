@@ -18,6 +18,6 @@ class NotificationListView(Injector):
     render = functions.Render.do
 
     @operation
-    def get(list_notifications, user, render):
+    def get(list_notifications, render, request):
 
-        return render(list_notifications(user=user))
+        return render(list_notifications(profile_id=request.profile_id))
