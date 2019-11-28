@@ -56,7 +56,7 @@ class BuySubscription:
 
     def check_balance(self, ctx):
 
-        if ctx.profile.balance > ctx.price.cost:
+        if ctx.profile.can_afford(ctx.price):
             return Success()
         else:
             return Failure()
