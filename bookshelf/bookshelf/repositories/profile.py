@@ -20,7 +20,7 @@ def load_profile(user) -> Profile:
 
 
 def create_profile(user) -> Profile:
-    return Profile.objects.create(user=user, balance=0)
+    return models.Profile.objects.create(user=user, balance=0)
 
 
 def add_balance(profile: Profile, amount: Decimal) -> Profile:
