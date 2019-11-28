@@ -25,7 +25,7 @@ class BuySubscription(Injector):
     load_profile = repositories.load_profile
     decrease_balance = repositories.decrease_balance
     save_profile = repositories.save_profile
-    calculate_period = functions.calculate_period
+    current_date = django.utils.timezone.now
     create_subscription = repositories.create_subscription
     send_notification = functions.SendNotification.do
     messages = functions.Messages

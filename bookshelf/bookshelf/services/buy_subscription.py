@@ -69,7 +69,7 @@ class BuySubscription:
 
     def persist_subscription(self, ctx):
 
-        expires = self.calculate_period(ctx.price.period)
+        expires = ctx.price.subscription_expiration(self.current_date())
         subscription = self.create_subscription(ctx.profile, ctx.category, expires)
         return Success(subscription=subscription)
 
@@ -91,7 +91,7 @@ class BuySubscription:
     load_profile: Callable
     decrease_balance: Callable
     save_profile: Callable
-    calculate_period: Callable
+    current_date: Callable
     create_subscription: Callable
     send_notification: Callable
     create_notification: Callable

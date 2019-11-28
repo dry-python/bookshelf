@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timedelta
 from decimal import Decimal
 from typing import NewType
 
@@ -18,3 +19,6 @@ class Price(Validated):
     from_date: datetime
     cost: Decimal
     period: int
+
+    def subscription_expiration(self, current_date: datetime) -> datetime:
+        return current_date + timedelta(days=self.period)
