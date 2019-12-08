@@ -5,9 +5,7 @@ from .category import Category
 
 class Price(models.Model):
 
-    category = models.ForeignKey(
-        Category, related_name="prices", on_delete=models.CASCADE
-    )
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     from_date = models.DateField()
 

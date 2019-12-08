@@ -5,8 +5,6 @@ from .profile import Profile
 
 class Notification(models.Model):
 
-    profile = models.ForeignKey(
-        Profile, related_name="notifications", on_delete=models.CASCADE
-    )
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     message = models.TextField()
