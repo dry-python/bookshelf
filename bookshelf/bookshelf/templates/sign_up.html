@@ -1,13 +1,18 @@
-{% extends 'layout.html' %} {% load i18n %} {% block body %}
-<nav>
-  <ol>
-    <li>
-      <a href="{% url 'login' %}">{% trans 'Login' %}</a>
-    </li>
-  </ol>
-</nav>
-<form method="POST" action="">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" value="{% trans 'Register' %}" />
-</form>
+{% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block body %}
+  <nav>
+    <ol>
+      <li>
+        <a href="{% url 'login' %}">{% trans 'Login' %}</a>
+      </li>
+    </ol>
+  </nav>
+  <form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans 'Register' %}">
+  </form>
 {% endblock %}

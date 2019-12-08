@@ -1,46 +1,54 @@
-{% extends 'layout.html' %} {% load i18n %} {% load index from bookshelf %} {%
-block body %}
-<nav>
-  <ol>
-    <li>
-      <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
-    </li>
-  </ol>
-</nav>
-<div>
-  <h1>{{ category.name }}</h1>
-</div>
-<div>
-  {% for form in forms %}
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load index from example %}
+
+{% block body %}
+  <nav>
+    <ol>
+      <li>
+        <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+      </li>
+    </ol>
+  </nav>
   <div>
-    <p>
-      <b>{% trans 'Price' %}</b>
-      {% with price=prices|index:form.initial.price_id %} {{ price.cost }} {%
-      endwith %}
-    </p>
-    <p>
-      <b>{% trans 'Period' %}</b>
-      {% with price=prices|index:form.initial.price_id %} {% blocktrans with
-      period=price.period %} For {{ period }} days. {% endblocktrans %} {%
-      endwith %}
-    </p>
-    <form method="POST" action="">
-      {% csrf_token %} {{ form.as_p }}
-      <input type="submit" value="{% trans 'Subscribe' %}" />
-    </form>
+    <h1>{{ category.name }}</h1>
   </div>
-  {% endfor %}
-</div>
+  <div>
+    {% for form in forms %}
+      <div>
+        <p>
+          <b>{% trans 'Price' %}</b>
+          {% with price=prices|index:form.initial.price_id %}
+            {{ price.cost }}
+          {% endwith %}
+        </p>
+        <p>
+          <b>{% trans 'Period' %}</b>
+          {% with price=prices|index:form.initial.price_id %}
+            {% blocktrans with period=price.period %}
+              For {{ period }} days.
+            {% endblocktrans %}
+          {% endwith %}
+        </p>
+        <form method="POST" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="{% trans 'Subscribe' %}">
+        </form>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

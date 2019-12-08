@@ -1,32 +1,41 @@
-{% extends 'layout.html' %} {% load i18n %} {% block body %}
-<nav>
-  <ol>
-    <li>
-      <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
-    </li>
-    <li>
-      <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
-    </li>
-  </ol>
-</nav>
-<div>
-  <h1>{{ category.name }}</h1>
-</div>
-<div>
-  {% if error %}
-  <p>{{ error }}</p>
-  {% else %} {% for entry in entries %}
-  <img src="{{ entry.content.url }}" />
-  {% empty %} {% blocktrans %} This category is empty. {% endblocktrans %} {%
-  endfor %} {% endif %}
-</div>
+{% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block body %}
+  <nav>
+    <ol>
+      <li>
+        <a href="{% url 'category-list' %}">{% trans 'Categories' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'category-shop' %}">{% trans 'Shop' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'profile' %}">{% trans 'Profile' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'notification-list' %}">{% trans 'Notifications' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+      </li>
+    </ol>
+  </nav>
+  <div>
+    <h1>{{ category.name }}</h1>
+  </div>
+  <div>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% else %}
+      {% for entry in entries %}
+        <img src="{{ entry.content.url }}">
+      {% empty %}
+        {% blocktrans %}
+          This category is empty.
+        {% endblocktrans %}
+      {% endfor %}
+    {% endif %}
+  </div>
 {% endblock %}
