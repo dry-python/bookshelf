@@ -1,12 +1,18 @@
 attrs==19.3.0
 git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
+Django==2.2.7
 django-debug-toolbar==2.1
 django-extensions==2.2.5
-django==2.2.7
 djangorestframework==3.10.3
 git+https://github.com/dry-python/mappers.git@master#egg=mappers
 pydantic==0.32.2
+git+https://github.com/dry-python/stories.git@master#egg=stories
+Werkzeug==0.16.0
+## The following requirements were added by pip freeze:
+argh==0.26.2
+pathtools==0.1.2
 pytz==2019.3
+PyYAML==5.2
 six==1.13.0
 sqlparse==0.3.0
-git+https://github.com/dry-python/stories.git@master#egg=stories
+watchdog==0.9.0
