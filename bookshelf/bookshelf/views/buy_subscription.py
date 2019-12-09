@@ -10,7 +10,6 @@ from bookshelf.forms import SubscribeForm
 
 
 implemented = Package("bookshelf.implemented")
-functions = Package("bookshelf.functions")
 
 
 @form_view

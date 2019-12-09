@@ -9,7 +9,6 @@ from bookshelf.forms import PutMoneyForm
 
 
 implemented = Package("bookshelf.implemented")
-functions = Package("bookshelf.functions")
 
 
 @form_view

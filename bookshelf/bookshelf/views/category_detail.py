@@ -7,7 +7,6 @@ from django.utils.translation import gettext as _
 
 
 implemented = Package("bookshelf.implemented")
-functions = Package("bookshelf.functions")
 
 
 @view
@@ -18,8 +17,6 @@ class CategoryDetailView(Injector):
     show_category = implemented.ShowCategory.show
 
     category_id = this.kwargs["id"]
-
-    render = functions.Render.do
 
     @operation
     def get(show_category, category_id, render, request):
