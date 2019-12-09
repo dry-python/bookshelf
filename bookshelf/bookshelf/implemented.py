@@ -9,14 +9,6 @@ repositories = Package("bookshelf.repositories")
 functions = Package("bookshelf.functions")
 
 
-class ShowPrices(Injector):
-
-    show_prices = services.ShopCategoryPrices.show
-    load_category = repositories.load_category
-    load_prices = repositories.prices_for_category
-    instantiate_forms = functions.make_subscription_forms
-
-
 class BuySubscription(Injector):
 
     buy_subscription = services.BuySubscription.buy
@@ -30,42 +22,6 @@ class BuySubscription(Injector):
     send_notification = functions.SendNotification.do
     messages = functions.Messages
     create_notification = repositories.create_notification
-
-
-class ShowCategory(Injector):
-
-    show = services.ShowCategory.show
-    load_category = repositories.load_category
-    load_subscription = repositories.load_subscription
-    load_entries = repositories.load_entries
-
-
-class ListCategories(Injector):
-
-    list = services.ListCategories.list
-    load_categories = repositories.load_categories
-    keep_subscriptions = repositories.category.keep_subscribed
-
-
-class CategoriesForPurchase(Injector):
-
-    list = services.CategoriesForPurchase.list
-    load_categories = repositories.load_categories
-    exclude_subscriptions = repositories.category.exclude_subscribed
-    filter_prices = repositories.category.keep_with_prices
-    load_prices = repositories.cheapest_price_by_category
-
-
-class ListNotifications(Injector):
-
-    list = services.ListNotifications.list
-    load_notifications = repositories.load_notifications
-
-
-class ShowProfile(Injector):
-
-    show = services.ShowProfile.show
-    load_profile = repositories.load_profile
 
 
 class PutMoneyIntoAccount(Injector):

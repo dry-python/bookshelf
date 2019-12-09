@@ -1,7 +1,6 @@
 from dependencies import Injector
 from dependencies import operation
 from dependencies import Package
-from dependencies import this
 from dependencies.contrib.django import form_view
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
@@ -21,12 +20,10 @@ class SignUpView(Injector):
 
     sign_up = implemented.SignUp.register_user
 
-    data = this.form.cleaned_data
-
     @operation
-    def form_valid(sign_up, data, form, view, request):
+    def form_valid(sign_up, form, view, request):
 
-        result = sign_up.run(data=data, request=request)
+        result = sign_up.run(data=form.cleaned_data, request=request)
         if result.is_success:
             return redirect("/")
         elif result.failed_on("compare_passwords"):
