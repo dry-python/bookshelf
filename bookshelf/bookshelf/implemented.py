@@ -16,6 +16,7 @@ class BuySubscription(Injector):
     load_price = repositories.load_price
     load_profile = repositories.load_profile
     decrease_balance = repositories.decrease_balance
+    # FIXME: This repository does not exists.
     save_profile = repositories.save_profile
     current_date = django.utils.timezone.now
     create_subscription = repositories.create_subscription
@@ -29,6 +30,7 @@ class PutMoneyIntoAccount(Injector):
     put = services.PutMoneyIntoAccount.put
     load_profile = repositories.load_profile
     add_balance = repositories.add_balance
+    # FIXME: This repository does not exists.
     save_profile = repositories.save_profile
     send_notification = functions.SendNotification.do
     messages = functions.Messages
@@ -42,6 +44,8 @@ class SignUp(Injector):
     create_user = repositories.create_user
     save_password = repositories.save_password
     create_profile = repositories.create_profile
+    # FIXME: Don't pass request object to the view.  Inject it is the
+    # Store class.
     store_user_in_session = django.contrib.auth.login
     send_notification = functions.SendNotification.do
     messages = functions.Messages

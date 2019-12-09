@@ -75,3 +75,9 @@ class SignUp:
     store_user_in_session: Callable
     send_notification: Callable
     create_notification: Callable
+
+
+# FIXME: Define context contract.
+
+
+# FIXME: Define failure protocol.

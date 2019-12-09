@@ -35,6 +35,7 @@ class PutMoneyIntoAccount:
 
     def increase_balance(self, ctx):
 
+        # TODO: Create payment record here.
         self.add_balance(ctx.profile, ctx.amount)
         self.save_profile(ctx.profile)
         return Success()

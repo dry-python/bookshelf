@@ -63,6 +63,7 @@ class BuySubscription:
 
     def persist_payment(self, ctx):
 
+        # TODO: Create payment record here.
         self.decrease_balance(ctx.profile, ctx.price.cost)
         self.save_profile(ctx.profile)
         return Success()
@@ -113,3 +114,6 @@ class Context(BaseModel):
     profile: Profile
     subscription: Subscription
     notification: Notification
+
+
+# FIXME: Define failure protocol.

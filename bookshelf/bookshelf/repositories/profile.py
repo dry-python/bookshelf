@@ -24,6 +24,7 @@ def create_profile(user) -> Profile:
 
 
 def add_balance(profile: Profile, amount: Decimal) -> Profile:
+    # TODO: Use update returning queryset.
     models.Profile.objects.filter(pk=profile.primary_key).update(
         balance=F("balance") + amount
     )
@@ -31,6 +32,7 @@ def add_balance(profile: Profile, amount: Decimal) -> Profile:
 
 
 def decrease_balance(profile, amount):
+    # TODO: Use update returning queryset.
     models.Profile.objects.filter(pk=profile.primary_key).update(
         balance=F("balance") - amount
     )
