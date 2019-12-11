@@ -8,6 +8,7 @@ from mappers import Mapper
 from bookshelf import models
 from bookshelf.entities import Category
 from bookshelf.entities import CategoryId
+from bookshelf.entities import ProfileId
 
 mapper = Mapper(Category, models.Category, {"primary_key": "id"})
 
@@ -18,13 +19,9 @@ def load_category(category_id: CategoryId) -> Category:
 
 
 @mapper.reader
-def load_categories() -> List[Category]:
-    return models.Category.objects.all()
-
-
-def keep_subscribed(categories, user):
-    return categories.filter(
-        subscriptions__profile__user=user, subscriptions__expires__gt=now()
+def load_subscribed_categories(profile_id: ProfileId) -> List[Category]:
+    return models.Category.objects.filter(
+        subscription__profile_id=profile_id, subscription__expires__gt=now()
     )
 
 

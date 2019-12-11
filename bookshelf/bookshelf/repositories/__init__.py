@@ -1,5 +1,5 @@
-from .category import load_categories
 from .category import load_category
+from .category import load_subscribed_categories
 from .entry import load_entries
 from .notification import create_notification
 from .notification import load_notifications

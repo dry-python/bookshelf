@@ -24,7 +24,7 @@
       <ul>
         {% for category in categories %}
           <li>
-            <a href="{{ category.get_absolute_url }}">
+            <a href="{% url 'category-detail' category.primary_key %}">
               {{ category.name }}
             </a>
           </li>
