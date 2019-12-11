@@ -25,12 +25,13 @@ def load_subscribed_categories(profile_id: ProfileId) -> List[Category]:
     )
 
 
-def exclude_subscribed(categories, user):
-    return categories.exclude(
-        subscriptions__profile__user=user, subscriptions__expires__gt=now()
-    )
-
-
-def keep_with_prices(categories):
+@mapper.reader
+def load_categories_for_purchase(profile_id: ProfileId) -> List[Category]:
     prices = models.Price.objects.filter(category=OuterRef("pk"))
-    return categories.annotate(has_price=Exists(prices)).filter(has_price=True)
+    return (
+        models.Category.objects.exclude(
+            subscription__profile_id=profile_id, subscription__expires__gt=now()
+        )
+        .annotate(has_price=Exists(prices))
+        .filter(has_price=True)
+    )

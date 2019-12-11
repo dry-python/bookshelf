@@ -1,7 +1,8 @@
+from decimal import Decimal
 from typing import Dict
 from typing import List
 
-from django.db.models import Min
+from django.db import connection
 from mappers import Mapper
 
 from bookshelf import models
@@ -22,26 +23,23 @@ def prices_for_category(category: Category) -> Dict[PriceId, Price]:
     return {price.pk: price for price in Price.objects.filter(category=category)}
 
 
-def cheapest_price_by_category(categories: List[Category]) -> Dict[CategoryId, int]:
-
-    # FIXME: Express this query.
-    #
-    # SELECT "category_id",
-    #        MIN("cost")
-    #   FROM "bookshelf_price"
-    #  WHERE "id" IN (
-    #    SELECT "id"
-    #      FROM "bookshelf_price"
-    #     WHERE "category_id" IN (1, 2, 3, 4)
-    #     GROUP BY "category_id", "period"
-    #    HAVING "from_date" = MAX("from_date")
-    #  )
-    #  GROUP BY "category_id"
-
-    return {
-        each["category"]: each["min_cost"]
-        for each in Price.objects.filter(category__in=categories)
-        .values("category")
-        .annotate(min_cost=Min("cost"))
-        .order_by()
-    }
+def load_cheapest_prices_for_categories(
+    categories: List[Category],
+) -> Dict[CategoryId, Decimal]:
+    query = """
+    SELECT "category_id",
+           MIN("cost")
+      FROM "bookshelf_price"
+     WHERE "id" IN (
+       SELECT "id"
+         FROM "bookshelf_price"
+        WHERE "category_id" IN %s
+        GROUP BY "category_id", "period"
+       HAVING "from_date" = MAX("from_date")
+     )
+     GROUP BY "category_id"
+    """
+    argument = [category.primary_key for category in categories]
+    with connection.cursor() as cursor:
+        cursor.execute(query, [argument])
+        return {k: v for k, v in cursor.fetchall()}

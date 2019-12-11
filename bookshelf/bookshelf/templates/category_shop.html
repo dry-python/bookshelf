@@ -27,11 +27,13 @@
           <li>
             {{ category.name }}
             <small>
-              {% blocktrans with price=prices|index:category.pk  %}
-                Starting from {{ price }}$.
-              {% endblocktrans %}
+              {% with price=prices|index:category.primary_key %}
+                {% blocktrans %}
+                  Starting from {{ price }}$.
+                {% endblocktrans %}
+              {% endwith %}
             </small>
-            <a href="{% url 'buy-subscription' category.pk %}">
+            <a href="{% url 'buy-subscription' category.primary_key %}">
               {% trans 'Buy' %}
             </a>
           </li>

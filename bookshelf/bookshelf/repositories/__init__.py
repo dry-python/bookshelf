@@ -1,9 +1,10 @@
+from .category import load_categories_for_purchase
 from .category import load_category
 from .category import load_subscribed_categories
 from .entry import load_entries
 from .notification import create_notification
 from .notification import load_notifications
-from .price import cheapest_price_by_category
+from .price import load_cheapest_prices_for_categories
 from .price import load_price
 from .price import prices_for_category
 from .profile import add_balance  # FIXME: Rename to increase balance.

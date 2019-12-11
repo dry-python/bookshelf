@@ -1,20 +1,24 @@
 from dependencies import Injector
-from dependencies import operation
 from dependencies import Package
-from dependencies.contrib.django import view
+from dependencies import value
+from dependencies.contrib.django import template_view
 
 
-implemented = Package("bookshelf.implemented")
+repositories = Package("bookshelf.repositories")
 
 
-@view
+@template_view
 class CategoryShopView(Injector):
 
     template_name = "category_shop.html"
 
-    categories_for_purchase = implemented.CategoriesForPurchase.list
+    load_categories = repositories.load_categories_for_purchase
 
-    @operation
-    def get(categories_for_purchase, render, request):
+    load_prices = repositories.load_cheapest_prices_for_categories
 
-        return render(categories_for_purchase(profile_id=request.profile_id))
+    @value
+    def extra_context(load_categories, load_prices, request):
+
+        categories = load_categories(request.profile_id)
+        prices = load_prices(categories)
+        return {"categories": categories, "prices": prices}
