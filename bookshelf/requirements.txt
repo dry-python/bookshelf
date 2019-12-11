@@ -1,6 +1,6 @@
 attrs==19.3.0
 git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
-Django==2.2.7
+Django==2.2.8
 django-debug-toolbar==2.1
 django-extensions==2.2.5
 djangorestframework==3.10.3
