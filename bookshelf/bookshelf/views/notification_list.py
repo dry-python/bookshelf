@@ -1,20 +1,20 @@
 from dependencies import Injector
-from dependencies import operation
+from dependencies import value
 from dependencies import Package
-from dependencies.contrib.django import view
+from dependencies.contrib.django import template_view
 
 
-implemented = Package("bookshelf.implemented")
+repositories = Package("bookshelf.repositories")
 
 
-@view
+@template_view
 class NotificationListView(Injector):
 
     template_name = "notification_list.html"
 
-    list_notifications = implemented.ListNotifications.list
+    load_notifications = repositories.load_notifications
 
-    @operation
-    def get(list_notifications, render, request):
+    @value
+    def extra_context(load_notifications, request):
 
-        return render(list_notifications(profile_id=request.profile_id))
+        return {"notifications": load_notifications(request.profile_id)}
