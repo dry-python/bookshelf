@@ -1,4 +1,6 @@
 import os
+from socket import gethostbyname
+from socket import gethostname
 
 from debug_toolbar.settings import PANELS_DEFAULTS
 from environ import Env
@@ -91,3 +93,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
     "stories.contrib.debug_toolbars.django.StoriesPanel"
 ]
+
+INTERNAL_IPS = [gethostbyname(gethostname())[:-1] + "1"]
