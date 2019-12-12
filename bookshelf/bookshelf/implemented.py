@@ -30,8 +30,6 @@ class PutMoneyIntoAccount(Injector):
     put = services.PutMoneyIntoAccount.put
     load_profile = repositories.load_profile
     add_balance = repositories.add_balance
-    # FIXME: This repository does not exists.
-    save_profile = repositories.save_profile
     send_notification = functions.SendNotification.do
     messages = functions.Messages
     create_notification = repositories.create_notification

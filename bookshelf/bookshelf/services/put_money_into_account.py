@@ -24,6 +24,7 @@ class PutMoneyIntoAccount:
 
         I.find_profile
         I.increase_balance
+        # TODO: Create payment record here.
         I.send_income_notification
 
     # Steps.
@@ -35,9 +36,7 @@ class PutMoneyIntoAccount:
 
     def increase_balance(self, ctx):
 
-        # TODO: Create payment record here.
         self.add_balance(ctx.profile, ctx.amount)
-        self.save_profile(ctx.profile)
         return Success()
 
     def send_income_notification(self, ctx):
@@ -49,9 +48,7 @@ class PutMoneyIntoAccount:
 
     load_profile: Callable
     add_balance: Callable
-    save_profile: Callable
     send_notification: Callable
-    create_notification: Callable
 
 
 @PutMoneyIntoAccount.put.contract

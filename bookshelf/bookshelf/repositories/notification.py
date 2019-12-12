@@ -15,5 +15,10 @@ def load_notifications(profile_id: ProfileId) -> List[Notification]:
     return models.Notification.objects.filter(profile=profile_id).order_by("-pk")
 
 
+@mapper.reader
 def create_notification(profile: Profile, message: str) -> Notification:
-    return models.Notification.objects.create(profile=profile, message=message)
+    # FIXME: Do not fetch the same data twice.
+    created = models.Notification.objects.create(
+        profile_id=profile.primary_key, message=message
+    )
+    return models.Notification.objects.filter(pk=created.pk)
