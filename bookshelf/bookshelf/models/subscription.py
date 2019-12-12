@@ -11,3 +11,7 @@ class Subscription(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     expires = models.DateTimeField()
+
+    class Meta:
+
+        unique_together = ['profile', 'category']
