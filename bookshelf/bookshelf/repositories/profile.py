@@ -6,17 +6,25 @@ from mappers import Mapper
 
 from bookshelf import models
 from bookshelf.entities import Profile
+from bookshelf.entities import ProfileId
+
 
 mapper = Mapper(
     Profile,
     models.Profile,
-    {"primary_key": "id", "name": ("user", "username"), "email": ("user", "email")},
+    {
+        "primary_key": "id",
+        "first_name": ("user", "first_name"),
+        "last_name": ("user", "last_name"),
+        "email": ("user", "email"),
+        "date_joined": ("user", "date_joined"),
+    },
 )
 
 
 @mapper.reader
-def load_profile(user) -> Profile:
-    return models.Profile.objects.filter(user=user)
+def load_profile(profile_id: ProfileId) -> Profile:
+    return models.Profile.objects.filter(pk=profile_id)
 
 
 def create_profile(user) -> Profile:

@@ -1,3 +1,4 @@
+from datetime import datetime
 from decimal import Decimal
 from typing import NewType
 
@@ -13,8 +14,10 @@ ProfileId = NewType("ProfileId", int)
 class Profile(Validated):
 
     primary_key: ProfileId
-    name: str
+    first_name: str
+    last_name: str
     email: str
+    date_joined: datetime
     balance: Decimal
 
     def can_afford(self, price: Price):

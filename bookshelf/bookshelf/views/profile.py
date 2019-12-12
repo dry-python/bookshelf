@@ -1,20 +1,20 @@
 from dependencies import Injector
-from dependencies import operation
 from dependencies import Package
-from dependencies.contrib.django import view
+from dependencies import value
+from dependencies.contrib.django import template_view
 
 
-implemented = Package("bookshelf.implemented")
+repositories = Package("bookshelf.repositories")
 
 
-@view
+@template_view
 class ProfileView(Injector):
 
     template_name = "profile.html"
 
-    show_profile = implemented.ShowProfile.show
+    load_profile = repositories.load_profile
 
-    @operation
-    def get(show_profile, render, request):
+    @value
+    def extra_context(load_profile, request):
 
-        return render(show_profile(profile_id=request.profile_id))
+        return {"profile": load_profile(request.profile_id)}
