@@ -1,4 +1,6 @@
-import os
+from os.path import abspath
+from os.path import dirname
+from os.path import join
 from socket import gethostbyname
 from socket import gethostname
 
@@ -7,7 +9,7 @@ from environ import Env
 
 env = Env()
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = dirname(dirname(abspath(__file__)))
 
 SECRET_KEY = "92)08k$_5!90rcx9h)doje#p(50a$dpa!8(pchqnz59bpo!ez&"
 
@@ -84,11 +86,11 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = join(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = join(BASE_DIR, "media")
 
 DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
     "stories.contrib.debug_toolbars.django.StoriesPanel"
