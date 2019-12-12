@@ -16,7 +16,6 @@ class Price(Validated):
 
     primary_key: PriceId
     category: Category
-    from_date: datetime
     cost: Decimal
     period: int
 
