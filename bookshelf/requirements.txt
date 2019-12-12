@@ -1,15 +1,18 @@
 attrs==19.3.0
 git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
-Django==2.2.8
+Django==3.0
 django-debug-toolbar==2.1
+django-environ==0.4.5
 django-extensions==2.2.5
-djangorestframework==3.10.3
+djangorestframework==3.11.0
 git+https://github.com/dry-python/mappers.git@master#egg=mappers
+psycopg2==2.8.4
 pydantic==0.32.2
 git+https://github.com/dry-python/stories.git@master#egg=stories
 Werkzeug==0.16.0
 ## The following requirements were added by pip freeze:
 argh==0.26.2
+asgiref==3.2.3
 pathtools==0.1.2
 pytz==2019.3
 PyYAML==5.2

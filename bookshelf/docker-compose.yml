@@ -1,11 +1,20 @@
-version: '3'
+version: "3"
 services:
   web:
     build: .
     image: bookshelf
     command: ./manage.py runserver_plus 0.0.0.0:8000
-    restart: on-failure
+    depends_on:
+      - db
     volumes:
       - .:/app
     ports:
       - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://bookshelf:bookshelf@db/bookshelf
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: bookshelf
+      POSTGRES_USER: bookshelf
+      POSTGRES_PASSWORD: bookshelf

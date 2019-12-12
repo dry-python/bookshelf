@@ -1,7 +1,9 @@
 import os
 
 from debug_toolbar.settings import PANELS_DEFAULTS
+from environ import Env
 
+env = Env()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -55,12 +57,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "bookshelf.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
+DATABASES = {"default": env.db()}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
