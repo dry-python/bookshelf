@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: .
+    image: bookshelf
+    command: ./manage.py runserver_plus 0.0.0.0:8000
+    restart: on-failure
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
