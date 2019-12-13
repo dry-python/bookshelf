@@ -16,8 +16,6 @@ class BuySubscription(Injector):
     load_price = repositories.load_price
     load_profile = repositories.load_profile
     decrease_balance = repositories.decrease_balance
-    # FIXME: This repository does not exists.
-    save_profile = repositories.save_profile
     current_date = django.utils.timezone.now
     create_subscription = repositories.create_subscription
     send_notification = functions.SendNotification.do

@@ -32,6 +32,7 @@ class BuySubscription:
         I.find_price
         I.find_profile
         I.check_balance
+        # TODO: Create payment record here.
         I.persist_payment
         I.persist_subscription
         I.send_subscription_notification
@@ -63,9 +64,7 @@ class BuySubscription:
 
     def persist_payment(self, ctx):
 
-        # TODO: Create payment record here.
         self.decrease_balance(ctx.profile, ctx.price.cost)
-        self.save_profile(ctx.profile)
         return Success()
 
     def persist_subscription(self, ctx):
@@ -91,11 +90,9 @@ class BuySubscription:
     load_price: Callable
     load_profile: Callable
     decrease_balance: Callable
-    save_profile: Callable
     current_date: Callable
     create_subscription: Callable
     send_notification: Callable
-    create_notification: Callable
 
 
 @BuySubscription.buy.contract

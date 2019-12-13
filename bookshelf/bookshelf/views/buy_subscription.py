@@ -16,7 +16,7 @@ implemented = Package("bookshelf.implemented")
 class BuySubscriptionView(Injector):
 
     template_name = "subscribe.html"
-    form_class = SubscribeForm
+    form_class = SubscribeForm  # FIXME: Use form set here.
 
     buy_subscription = implemented.BuySubscription.buy_subscription
 

@@ -31,6 +31,10 @@ def load_subscription(
 def create_subscription(
     profile: Profile, category: Category, expires: datetime
 ) -> Subscription:
-    return models.Subscription.objects.create(
-        profile=profile, category=category, expires=expires
+    models.Subscription.objects.create(
+        profile_id=profile.primary_key,
+        category_id=category.primary_key,
+        expires=expires,
     )
+    # FIXME: Do not fetch the same data twice.
+    return load_subscription(category, profile.primary_key)
