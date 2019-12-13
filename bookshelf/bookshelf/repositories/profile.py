@@ -27,8 +27,11 @@ def load_profile(profile_id: ProfileId) -> Profile:
     return models.Profile.objects.filter(pk=profile_id)
 
 
+@mapper.reader
 def create_profile(user) -> Profile:
-    return models.Profile.objects.create(user=user, balance=0)
+    # FIXME: Do not fetch the same data twice.
+    created = models.Profile.objects.create(user=user, balance=0)
+    return models.Profile.objects.filter(pk=created.pk)
 
 
 def add_balance(profile: Profile, amount: Decimal) -> Profile:
