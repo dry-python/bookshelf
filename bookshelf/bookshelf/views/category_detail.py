@@ -1,42 +1,50 @@
 from dependencies import Injector
-from dependencies import operation
 from dependencies import Package
 from dependencies import this
-from dependencies.contrib.django import view
+from dependencies import value
+from dependencies.contrib.django import template_view
 from django.utils.translation import gettext as _
 
 
-implemented = Package("bookshelf.implemented")
+repositories = Package("bookshelf.repositories")
 
 
-@view
+@template_view
 class CategoryDetailView(Injector):
 
     template_name = "category_detail.html"
 
-    show_category = implemented.ShowCategory.show
+    load_category = repositories.load_category
+
+    load_subscription = repositories.load_subscription
+
+    load_entries = repositories.load_entries
 
     category_id = this.kwargs["id"]
 
-    @operation
-    def get(show_category, category_id, render, request):
+    profile_id = this.request.profile_id
 
-        result = show_category.run(
-            category_id=category_id, profile_id=request.profile_id
-        )
-        if result.is_success:
-            return render(result.value)
-        elif result.failed_on("find_subscription"):
-            return render(
-                {
-                    "category": result.ctx.category,
-                    "error": _("You should subscribe to this category."),
-                }
-            )
-        elif result.failed_on("check_expiration"):
-            return render(
-                {
-                    "category": result.ctx.category,
-                    "error": _("Your subscription expires."),
-                }
-            )
+    @value
+    def extra_context(
+        load_category, load_subscription, load_entries, category_id, profile_id
+    ):
+
+        # TODO: Is it better to keep this business logic in the
+        # service layer?
+
+        category = load_category(category_id)
+
+        subscription = load_subscription(category, profile_id)
+
+        if subscription is None:
+            return {
+                "category": category,
+                "error": _("You should subscribe to this category."),
+            }
+
+        if subscription.is_expired:
+            return {"category": category, "error": _("Your subscription expires.")}
+
+        entries = load_entries(category)
+
+        return {"category": category, "entries": entries}
