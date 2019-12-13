@@ -6,6 +6,7 @@ from bookshelf import models
 from bookshelf.entities import Category
 from bookshelf.entities import Entry
 
+
 mapper = Mapper(Entry, models.Entry, {"primary_key": "id"})
 
 

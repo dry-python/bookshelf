@@ -1,6 +1,6 @@
 from dependencies import Injector
-from dependencies import value
 from dependencies import Package
+from dependencies import value
 from dependencies.contrib.django import template_view
 
 

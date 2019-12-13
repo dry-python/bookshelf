@@ -7,6 +7,7 @@ from bookshelf.entities import Notification
 from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 
+
 mapper = Mapper(Notification, models.Notification, {"primary_key": "id"})
 
 

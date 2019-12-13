@@ -12,6 +12,7 @@ from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 from bookshelf.entities import Subscription
 
+
 mapper = Mapper(
     Subscription, models.Subscription, {"primary_key": "id", "is_expired": Evaluated()}
 )

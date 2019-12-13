@@ -10,6 +10,7 @@ from bookshelf.entities import Category
 from bookshelf.entities import CategoryId
 from bookshelf.entities import ProfileId
 
+
 mapper = Mapper(Category, models.Category, {"primary_key": "id"})
 
 

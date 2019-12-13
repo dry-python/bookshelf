@@ -14,4 +14,4 @@ class Subscription(models.Model):
 
     class Meta:
 
-        unique_together = ['profile', 'category']
+        unique_together = ["profile", "category"]

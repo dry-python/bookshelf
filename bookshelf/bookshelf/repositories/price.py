@@ -11,6 +11,7 @@ from bookshelf.entities import CategoryId
 from bookshelf.entities import Price
 from bookshelf.entities import PriceId
 
+
 mapper = Mapper(Price, models.Price, {"primary_key": "id"})
 
 
