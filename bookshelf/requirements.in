@@ -8,5 +8,6 @@ djangorestframework
 git+https://github.com/dry-python/mappers.git@master#egg=mappers
 psycopg2
 pydantic
+raven
 git+https://github.com/dry-python/stories.git@master#egg=stories
 Werkzeug[watchdog]

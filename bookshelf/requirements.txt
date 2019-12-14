@@ -8,6 +8,7 @@ djangorestframework==3.11.0
 git+https://github.com/dry-python/mappers.git@master#egg=mappers
 psycopg2==2.8.4
 pydantic==0.32.2
+raven==6.10.0
 git+https://github.com/dry-python/stories.git@master#egg=stories
 Werkzeug==0.16.0
 ## The following requirements were added by pip freeze:
