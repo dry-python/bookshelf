@@ -4,14 +4,14 @@ from dependencies import Package
 
 django = Package("django")
 
-services = Package("bookshelf.services")
+usecases = Package("bookshelf.usecases")
 repositories = Package("bookshelf.repositories")
 functions = Package("bookshelf.functions")
 
 
 class BuySubscription(Injector):
 
-    buy_subscription = services.BuySubscription.buy
+    buy_subscription = usecases.BuySubscription.buy
     load_category = repositories.load_category
     load_price = repositories.load_price
     load_profile = repositories.load_profile
@@ -25,7 +25,7 @@ class BuySubscription(Injector):
 
 class PutMoneyIntoAccount(Injector):
 
-    put = services.PutMoneyIntoAccount.put
+    put = usecases.PutMoneyIntoAccount.put
     load_profile = repositories.load_profile
     add_balance = repositories.add_balance
     send_notification = functions.SendNotification.do
@@ -35,7 +35,7 @@ class PutMoneyIntoAccount(Injector):
 
 class SignUp(Injector):
 
-    register_user = services.SignUp.register_user
+    register_user = usecases.SignUp.register_user
     validate_password = functions.validate_password
     create_user = repositories.create_user
     save_password = repositories.save_password
