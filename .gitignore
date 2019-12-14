@@ -1,8 +1,4 @@
-*~
-db.sqlite3
 *.pyc
-__pycache__/
-django/media/
-django/static/
-dump.*
+*~
 .tox/
+__pycache__/
