@@ -12,9 +12,19 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: postgres://bookshelf:bookshelf@db/bookshelf
+      SENTRY_DSN: http://90cd262318fd4904b735809e4fcde4fc@sentry:9000/1
+    networks:
+      - default
+      - sentry
+    external_links:
+      - sentry_web_1:sentry
   db:
     image: postgres
     environment:
       POSTGRES_DB: bookshelf
       POSTGRES_USER: bookshelf
       POSTGRES_PASSWORD: bookshelf
+networks:
+  sentry:
+    external:
+      name: sentry_default
