@@ -69,7 +69,7 @@ class BuySubscription:
 
     def persist_subscription(self, ctx):
 
-        expires = ctx.price.subscription_expiration(self.current_date())
+        expires = ctx.price.subscription_will_expire(self.current_date())
         subscription = self.create_subscription(ctx.profile, ctx.category, expires)
         return Success(subscription=subscription)
 

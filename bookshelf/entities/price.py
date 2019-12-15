@@ -19,5 +19,5 @@ class Price(Validated):
     cost: Decimal
     period: int
 
-    def subscription_expiration(self, current_date: datetime) -> datetime:
+    def subscription_will_expire(self, current_date: datetime) -> datetime:
         return current_date + timedelta(days=self.period)
