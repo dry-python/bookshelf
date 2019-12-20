@@ -8,15 +8,22 @@ from django.utils.timezone import now
 from mappers import Evaluated
 from mappers import Mapper
 
+from .profile import config as profile_config
 from bookshelf import models
 from bookshelf.entities import Category
 from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 from bookshelf.entities import Subscription
 
-
 mapper = Mapper(
-    Subscription, models.Subscription, {"primary_key": "id", "is_expired": Evaluated()}
+    Subscription,
+    models.Subscription,
+    {
+        "primary_key": "id",
+        "profile": Mapper(profile_config),
+        "category": Mapper({"primary_key": "id"}),
+        "is_expired": Evaluated(),
+    },
 )
 
 

@@ -12,7 +12,11 @@ from bookshelf.entities import Price
 from bookshelf.entities import PriceId
 
 
-mapper = Mapper(Price, models.Price, {"primary_key": "id"})
+mapper = Mapper(
+    Price,
+    models.Price,
+    {"primary_key": "id", "category": Mapper({"primary_key": "id"})},
+)
 
 
 @mapper.reader

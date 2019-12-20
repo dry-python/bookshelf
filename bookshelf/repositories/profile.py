@@ -9,17 +9,15 @@ from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 
 
-mapper = Mapper(
-    Profile,
-    models.Profile,
-    {
-        "primary_key": "id",
-        "first_name": ("user", "first_name"),
-        "last_name": ("user", "last_name"),
-        "email": ("user", "email"),
-        "date_joined": ("user", "date_joined"),
-    },
-)
+config = {
+    "primary_key": "id",
+    "first_name": ("user", "first_name"),
+    "last_name": ("user", "last_name"),
+    "email": ("user", "email"),
+    "date_joined": ("user", "date_joined"),
+}
+
+mapper = Mapper(Profile, models.Profile, config,)
 
 
 @mapper.reader
