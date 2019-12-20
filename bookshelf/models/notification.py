@@ -7,4 +7,4 @@ class Notification(models.Model):
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
-    message = models.TextField()
+    kind = models.IntegerField()

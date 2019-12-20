@@ -8,6 +8,7 @@ from stories import story
 from stories import Success
 
 from bookshelf.entities import Notification
+from bookshelf.entities import NotificationKind
 from bookshelf.entities import Profile
 from bookshelf.entities import ProfileId
 
@@ -25,7 +26,8 @@ class PutMoneyIntoAccount:
         I.find_profile
         I.increase_balance
         # TODO: Create payment record here.
-        I.send_income_notification
+        I.prepare_income_notification
+        I.send_notifications
 
     # Steps.
 
@@ -39,16 +41,16 @@ class PutMoneyIntoAccount:
         self.add_balance(ctx.profile, ctx.amount)
         return Success()
 
-    def send_income_notification(self, ctx):
+    def prepare_income_notification(self, ctx):
 
-        notification = self.send_notification("income", ctx.profile, ctx.amount)
-        return Success(notification=notification)
+        notification = Notification(profile=ctx.profile, kind=NotificationKind.income)
+        return Success(notifications=[notification])
 
     # Dependencies.
 
     load_profile: Callable
     add_balance: Callable
-    send_notification: Callable
+    send_notifications: story
 
 
 @PutMoneyIntoAccount.put.contract
@@ -62,4 +64,3 @@ class Context(BaseModel):
     # State.
 
     profile: Profile
-    notification: Notification

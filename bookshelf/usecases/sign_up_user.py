@@ -6,6 +6,9 @@ from stories import Failure
 from stories import story
 from stories import Success
 
+from bookshelf.entities import Notification
+from bookshelf.entities import NotificationKind
+
 
 @attrs(auto_attribs=True)
 class SignUp:
@@ -21,7 +24,8 @@ class SignUp:
         I.encrypt_password
         I.persist_profile
         I.login_user
-        I.send_welcome_notification
+        I.prepare_welcome_notification
+        I.send_notifications
 
     # Steps.
 
@@ -61,10 +65,10 @@ class SignUp:
         self.store_user_in_session(ctx.request, ctx.user)
         return Success()
 
-    def send_welcome_notification(self, ctx):
+    def prepare_welcome_notification(self, ctx):
 
-        notification = self.send_notification("welcome", ctx.profile)
-        return Success(notification=notification)
+        notification = Notification(profile=ctx.profile, kind=NotificationKind.welcome)
+        return Success(notifications=[notification])
 
     # Dependencies.
 
@@ -73,8 +77,7 @@ class SignUp:
     save_password: Callable
     create_profile: Callable
     store_user_in_session: Callable
-    send_notification: Callable
-    create_notification: Callable
+    send_notifications: story
 
 
 # FIXME: Define context contract.

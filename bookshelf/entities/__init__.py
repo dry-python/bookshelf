@@ -4,6 +4,7 @@ from .entry import Entry
 from .entry import EntryId
 from .notification import Notification
 from .notification import NotificationId
+from .notification import NotificationKind
 from .price import Price
 from .price import PriceId
 from .profile import Profile

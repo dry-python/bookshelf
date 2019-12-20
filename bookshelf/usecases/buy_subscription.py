@@ -11,6 +11,7 @@ from stories import Success
 from bookshelf.entities import Category
 from bookshelf.entities import CategoryId
 from bookshelf.entities import Notification
+from bookshelf.entities import NotificationKind
 from bookshelf.entities import Price
 from bookshelf.entities import PriceId
 from bookshelf.entities import Profile
@@ -35,7 +36,8 @@ class BuySubscription:
         # TODO: Create payment record here.
         I.persist_payment
         I.persist_subscription
-        I.send_subscription_notification
+        I.prepare_subscription_notification
+        I.send_notifications
         I.show_category
 
     # Steps.
@@ -73,12 +75,12 @@ class BuySubscription:
         subscription = self.create_subscription(ctx.profile, ctx.category, expires)
         return Success(subscription=subscription)
 
-    def send_subscription_notification(self, ctx):
+    def prepare_subscription_notification(self, ctx):
 
-        notification = self.send_notification(
-            "subscription", ctx.profile, ctx.category.name
+        notification = Notification(
+            profile=ctx.profile, kind=NotificationKind.subscription
         )
-        return Success(notification=notification)
+        return Success(notifications=[notification])
 
     def show_category(self, ctx):
 
@@ -92,7 +94,7 @@ class BuySubscription:
     decrease_balance: Callable
     current_date: Callable
     create_subscription: Callable
-    send_notification: Callable
+    send_notifications: story
 
 
 @BuySubscription.buy.contract
@@ -110,7 +112,6 @@ class Context(BaseModel):
     price: Price
     profile: Profile
     subscription: Subscription
-    notification: Notification
 
 
 # FIXME: Define failure protocol.
