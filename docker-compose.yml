@@ -6,6 +6,7 @@ services:
     command: ./manage.py runserver_plus 0.0.0.0:8000
     depends_on:
       - db
+      - ws
     volumes:
       - .:/app
     ports:
@@ -13,6 +14,7 @@ services:
     environment:
       DATABASE_URL: postgres://bookshelf:bookshelf@db/bookshelf
       SENTRY_DSN: http://90cd262318fd4904b735809e4fcde4fc@sentry:9000/1
+      CENTRIFUGO_URL: http://ws:8001/
     networks:
       - default
       - sentry
@@ -24,6 +26,11 @@ services:
       POSTGRES_DB: bookshelf
       POSTGRES_USER: bookshelf
       POSTGRES_PASSWORD: bookshelf
+  ws:
+    image: centrifugo/centrifugo
+    command: centrifugo --address 0.0.0.0 --port 8001 --api_insecure --client_insecure
+    ports:
+      - "8001:8001"
 networks:
   sentry:
     external:
