@@ -1,7 +1,7 @@
 attrs==19.3.0
 cent==3.0.1
 git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
-Django==3.0.1
+Django==3.0.2
 django-debug-toolbar==2.1
 django-environ==0.4.5
 django-extensions==2.2.5
@@ -20,7 +20,7 @@ chardet==3.0.4
 idna==2.8
 pathtools==0.1.2
 pytz==2019.3
-PyYAML==5.2
+PyYAML==5.3
 requests==2.22.0
 six==1.13.0
 sqlparse==0.3.0
