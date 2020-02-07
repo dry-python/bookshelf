@@ -1,20 +1,11 @@
-from dependencies import Injector
-from dependencies import Package
-from dependencies import value
-from dependencies.contrib.django import template_view
+from django.views.generic import TemplateView
+
+from bookshelf.repositories import load_subscribed_categories
 
 
-repositories = Package("bookshelf.repositories")
-
-
-@template_view
-class CategoryListView(Injector):
-
+class CategoryListView(TemplateView):
     template_name = "category_list.html"
 
-    load_categories = repositories.load_subscribed_categories
-
-    @value
-    def extra_context(load_categories, request):
-
-        return {"categories": load_categories(request.profile_id)}
+    @property
+    def extra_context(self):
+        return {"categories": load_subscribed_categories(self.request.profile_id)}

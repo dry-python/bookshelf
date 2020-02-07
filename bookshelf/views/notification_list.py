@@ -1,20 +1,11 @@
-from dependencies import Injector
-from dependencies import Package
-from dependencies import value
-from dependencies.contrib.django import template_view
+from django.views.generic import TemplateView
+
+from bookshelf.repositories import load_notifications
 
 
-repositories = Package("bookshelf.repositories")
-
-
-@template_view
-class NotificationListView(Injector):
-
+class NotificationListView(TemplateView):
     template_name = "notification_list.html"
 
-    load_notifications = repositories.load_notifications
-
-    @value
-    def extra_context(load_notifications, request):
-
-        return {"notifications": load_notifications(request.profile_id)}
+    @property
+    def extra_context(self):
+        return {"notifications": load_notifications(self.request.profile_id)}

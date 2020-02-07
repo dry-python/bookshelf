@@ -1,40 +1,22 @@
-from dependencies import Injector
-from dependencies import Package
-from dependencies import this
-from dependencies import value
-from dependencies.contrib.django import template_view
 from django.utils.translation import gettext as _
+from django.views.generic import TemplateView
+
+from bookshelf.repositories import load_category
+from bookshelf.repositories import load_entries
+from bookshelf.repositories import load_subscription
 
 
-repositories = Package("bookshelf.repositories")
-
-
-@template_view
-class CategoryDetailView(Injector):
-
+class CategoryDetailView(TemplateView):
     template_name = "category_detail.html"
 
-    load_category = repositories.load_category
-
-    load_subscription = repositories.load_subscription
-
-    load_entries = repositories.load_entries
-
-    category_id = this.kwargs["id"]
-
-    profile_id = this.request.profile_id
-
-    @value
-    def extra_context(
-        load_category, load_subscription, load_entries, category_id, profile_id
-    ):
-
+    @property
+    def extra_context(self):
         # TODO: Is it better to keep this business logic in the
         # service layer?
 
-        category = load_category(category_id)
+        category = load_category(self.kwargs["id"])
 
-        subscription = load_subscription(category, profile_id)
+        subscription = load_subscription(category, self.request.profile_id)
 
         if subscription is None:
             return {
