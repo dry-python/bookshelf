@@ -24,4 +24,4 @@ sqlparse==0.3.0
 git+https://github.com/dry-python/stories.git@master#egg=stories
 urllib3==1.25.7
 watchdog==0.9.0
-werkzeug[watchdog]==0.16.1
+werkzeug[watchdog]==1.0.0
