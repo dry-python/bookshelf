@@ -1,14 +1,14 @@
 attrs
 cent
-git+https://github.com/dry-python/dependencies.git@master#egg=dependencies
+dependencies
 Django
 django-debug-toolbar
 django-environ
 django-extensions
 djangorestframework
-git+https://github.com/dry-python/mappers.git@master#egg=mappers
+mappers
 psycopg2
 pydantic
 raven
-git+https://github.com/dry-python/stories.git@master#egg=stories
+stories
 Werkzeug[watchdog]
