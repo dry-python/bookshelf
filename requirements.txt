@@ -10,7 +10,7 @@ django-extensions==2.2.8
 django==3.0.4
 djangorestframework==3.11.0
 idna==2.9
-mappers==1.0.1
+mappers==1.0.2
 pathtools==0.1.2
 psycopg2==2.8.4
 pydantic==1.4
