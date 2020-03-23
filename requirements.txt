@@ -1,4 +1,4 @@
-asgiref==3.2.3
+asgiref==3.2.5
 attrs==19.3.0
 cent==3.0.1
 certifi==2019.11.28
